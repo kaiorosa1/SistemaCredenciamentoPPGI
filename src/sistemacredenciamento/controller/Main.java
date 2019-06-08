@@ -8,7 +8,7 @@ package sistemacredenciamento.controller;
 
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class Main {
 
