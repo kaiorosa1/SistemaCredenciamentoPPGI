@@ -9,6 +9,14 @@ package sistemacredenciamento.model;
  *
  * @author Kaio Rosa
  */
-public class Conferencia extends Veiculo{
-    
+public class Conferencia extends Publicacao{
+     private String localConferencia;
+
+    public String getLocalConferencia() {
+        return localConferencia;
+    }
+
+    public void setLocalConferencia(String localConferencia) {
+        this.localConferencia = localConferencia;
+    }
 }

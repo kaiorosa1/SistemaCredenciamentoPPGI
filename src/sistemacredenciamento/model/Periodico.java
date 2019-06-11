@@ -9,6 +9,14 @@ package sistemacredenciamento.model;
  *
  * @author Kaio Rosa
  */
-public class Periodico extends Veiculo {
-    
+public class Periodico extends Publicacao {
+    private int volumePeriodico;
+
+    public int getVolumePeriodico() {
+        return volumePeriodico;
+    }
+
+    public void setVolumePeriodico(int volumePeriodico) {
+        this.volumePeriodico = volumePeriodico;
+    }
 }

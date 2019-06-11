@@ -15,8 +15,8 @@ public class Publicacao {
     private String titulo;
     //lista Autores -- lista de docentes
     private int numero;
-    private int volumePeriodico;
-    private String localConferencia;
+    
+   
     private int paginalInical;
     private int paginaFinal;
 
@@ -52,21 +52,6 @@ public class Publicacao {
         this.numero = numero;
     }
 
-    public int getVolumePeriodico() {
-        return volumePeriodico;
-    }
-
-    public void setVolumePeriodico(int volumePeriodico) {
-        this.volumePeriodico = volumePeriodico;
-    }
-
-    public String getLocalConferencia() {
-        return localConferencia;
-    }
-
-    public void setLocalConferencia(String localConferencia) {
-        this.localConferencia = localConferencia;
-    }
 
     public int getPaginalInical() {
         return paginalInical;
