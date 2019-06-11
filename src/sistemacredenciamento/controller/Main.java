@@ -16,8 +16,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("This is gonna be Sistema De Credenciamento PPGI");
+       // Read Files and create the objects
+       
+       // create handle exceptions
+       
+       
     }
     
 }

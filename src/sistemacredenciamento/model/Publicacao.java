@@ -5,6 +5,8 @@
  */
 package sistemacredenciamento.model;
 
+import java.util.List;
+
 /**
  *
  * @author Kaio Rosa
@@ -13,7 +15,7 @@ public class Publicacao {
     private int ano;
     private String siglaVeiculo;
     private String titulo;
-    //lista Autores -- lista de docentes
+    List<Docente> listaAutores;
     private int numero;
     
    

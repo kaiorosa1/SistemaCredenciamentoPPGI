@@ -12,7 +12,21 @@ package sistemacredenciamento.model;
 public class Qualificacao {
     private int ano;
     private String siglaVeiculo;
-    //Qualis
+    private Qualis qualis;
+
+    public Qualificacao(int ano, String siglaVeiculo, Qualis qualis) {
+        this.ano = ano;
+        this.siglaVeiculo = siglaVeiculo;
+        this.qualis = qualis;
+    }
+
+    public Qualis getQualis() {
+        return qualis;
+    }
+
+    public void setQualis(Qualis qualis) {
+        this.qualis = qualis;
+    }
 
     public int getAno() {
         return ano;

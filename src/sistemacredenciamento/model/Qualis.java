@@ -10,5 +10,10 @@ package sistemacredenciamento.model;
  * @author Kaio Rosa
  */
 public class Qualis {
+    private String siglaQualis;
     
+    
+    public void setPontuacaoQualis(){
+        // solves the issues concerning to calculate the range of points
+    }
 }

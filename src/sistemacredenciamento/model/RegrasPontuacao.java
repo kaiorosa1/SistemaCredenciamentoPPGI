@@ -6,6 +6,7 @@
 package sistemacredenciamento.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -14,11 +15,18 @@ import java.util.Date;
 public class RegrasPontuacao {
     private Date dataInicio;
     private Date dataFim;
-    //lista Qualis
-    //lista pontos
+    private List<Qualis> listaQualis;
     private double multiplicadorPeridicos;
     private int quantidadeDeAnosConsiderar;
     private int pontuacaoMinimaRecredenciamento;
+
+    public List<Qualis> getListaQualis() {
+        return listaQualis;
+    }
+
+    public void setListaQualis(List<Qualis> listaQualis) {
+        this.listaQualis = listaQualis;
+    }
 
     public Date getDataInicio() {
         return dataInicio;

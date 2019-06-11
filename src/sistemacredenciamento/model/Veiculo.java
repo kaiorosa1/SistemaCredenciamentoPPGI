@@ -10,15 +10,13 @@ package sistemacredenciamento.model;
  * @author Kaio Rosa
  */
 public class Veiculo {
-    // Conferencia ou um peridico  [Veiculo em si nao existe]
-    // class abstrata que nao pode ser instanciada? google this
     
     private String sigla;
     private String nome;
     private char tipo;
     private double fatorDeImpacto;
     private String ISSN;
-
+    
     public String getSigla() {
         return sigla;
     }
