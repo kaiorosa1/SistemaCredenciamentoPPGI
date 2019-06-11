@@ -11,6 +11,18 @@ package sistemacredenciamento.model;
  */
 public class Qualis {
     private String siglaQualis;
+
+    public Qualis(String siglaQualis) {
+        this.siglaQualis = siglaQualis;
+    }
+
+    public String getSiglaQualis() {
+        return siglaQualis;
+    }
+
+    public void setSiglaQualis(String siglaQualis) {
+        this.siglaQualis = siglaQualis;
+    }
     
     
     public void setPontuacaoQualis(){

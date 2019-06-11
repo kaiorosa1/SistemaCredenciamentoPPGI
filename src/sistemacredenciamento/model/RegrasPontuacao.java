@@ -20,6 +20,15 @@ public class RegrasPontuacao {
     private int quantidadeDeAnosConsiderar;
     private int pontuacaoMinimaRecredenciamento;
 
+    public RegrasPontuacao(Date dataInicio, Date dataFim, List<Qualis> listaQualis, double multiplicadorPeridicos, int quantidadeDeAnosConsiderar, int pontuacaoMinimaRecredenciamento) {
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.listaQualis = listaQualis;
+        this.multiplicadorPeridicos = multiplicadorPeridicos;
+        this.quantidadeDeAnosConsiderar = quantidadeDeAnosConsiderar;
+        this.pontuacaoMinimaRecredenciamento = pontuacaoMinimaRecredenciamento;
+    }
+
     public List<Qualis> getListaQualis() {
         return listaQualis;
     }

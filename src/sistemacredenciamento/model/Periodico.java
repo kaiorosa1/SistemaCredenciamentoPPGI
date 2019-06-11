@@ -5,12 +5,19 @@
  */
 package sistemacredenciamento.model;
 
+import java.util.List;
+
 /**
  *
  * @author Kaio Rosa
  */
 public class Periodico extends Publicacao {
     private int volumePeriodico;
+
+    public Periodico(int volumePeriodico, int ano, String siglaVeiculo, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
+        super(ano, siglaVeiculo, titulo, listaAutores, numero, paginalInical, paginaFinal);
+        this.volumePeriodico = volumePeriodico;
+    }
 
     public int getVolumePeriodico() {
         return volumePeriodico;

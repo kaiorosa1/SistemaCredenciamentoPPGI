@@ -17,6 +17,16 @@ public class Publicacao {
     private String titulo;
     List<Docente> listaAutores;
     private int numero;
+
+    public Publicacao(int ano, String siglaVeiculo, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
+        this.ano = ano;
+        this.siglaVeiculo = siglaVeiculo;
+        this.titulo = titulo;
+        this.listaAutores = listaAutores;
+        this.numero = numero;
+        this.paginalInical = paginalInical;
+        this.paginaFinal = paginaFinal;
+    }
     
    
     private int paginalInical;

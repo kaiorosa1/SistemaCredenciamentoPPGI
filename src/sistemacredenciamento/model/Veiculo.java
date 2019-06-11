@@ -16,6 +16,15 @@ public class Veiculo {
     private char tipo;
     private double fatorDeImpacto;
     private String ISSN;
+
+    public Veiculo(String sigla, String nome, char tipo, double fatorDeImpacto, String ISSN) {
+        this.sigla = sigla;
+        this.nome = nome;
+        this.tipo = tipo;
+        this.fatorDeImpacto = fatorDeImpacto;
+        this.ISSN = ISSN;
+    }
+    
     
     public String getSigla() {
         return sigla;
