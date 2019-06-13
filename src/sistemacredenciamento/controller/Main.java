@@ -31,10 +31,18 @@ public class Main {
      */
     public static void main(String[] args) {
        // Read Files and create the objects
-       String fileName = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\docentes.csv";
-        List<Docente> listaDocentes = null;
+       String docentesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\docentes.csv";
+       String veiculosFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\veiculos.csv";
+       
+       List<Docente> listaDocentes = null;
+       List<Veiculo> listaVeiculos = null;
+        
        try {
-            listaDocentes = readDocentes(fileName);
+            listaDocentes = readDocentes(docentesFile);
+            listaVeiculos = readVeiculos(veiculosFile);
+            // ler publicacoes file
+            // ler qualificacoes file
+            // ler regras de pontuacao file
             
         } catch (ParseException ex) {
             System.out.println("Error ao converter data");
@@ -70,11 +78,41 @@ public class Main {
             }
 
         } catch (Exception e) {
-            System.out.println("Error ");
+            System.out.println("Error ao ler docentes.csv");
         } 
         
         return listaDocentes;
     }
+    
+    public static List<Veiculo> readVeiculos(String fName) throws ParseException{
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ";";
+        
+        List<Veiculo> listaDocentes = new ArrayList<>();
+        
+        try {
+
+            br = new BufferedReader(new FileReader(fName));
+            // header of the file
+            line = br.readLine();
+            while ((line = br.readLine()) != null) {
+
+                String[] codigo = line.split(cvsSplitBy,'\n');
+               
+                
+                
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error ao ler veiculos.csv");
+        } 
+        
+        return listaDocentes;
+    }
+    
+    
+    
     
     public static void printListaDocente(List<Docente> list){
         
