@@ -11,14 +11,25 @@ package sistemacredenciamento.model;
  */
 public class Qualificacao {
     private int ano;
-    private String siglaVeiculo;
+    private Veiculo veiculoQualificacao;
     private Qualis qualis;
 
-    public Qualificacao(int ano, String siglaVeiculo, Qualis qualis) {
+    public Qualificacao(int ano, Veiculo veiculoQualificacao, Qualis qualis) {
         this.ano = ano;
-        this.siglaVeiculo = siglaVeiculo;
+        this.veiculoQualificacao = veiculoQualificacao;
         this.qualis = qualis;
     }
+    
+     
+    public Veiculo getVeiculoQualificacao() {
+        return veiculoQualificacao;
+    }
+
+    public void setVeiculoQualificacao(Veiculo veiculoQualificacao) {
+        this.veiculoQualificacao = veiculoQualificacao;
+    }
+
+   
 
     public Qualis getQualis() {
         return qualis;
@@ -36,12 +47,5 @@ public class Qualificacao {
         this.ano = ano;
     }
 
-    public String getSiglaVeiculo() {
-        return siglaVeiculo;
-    }
-
-    public void setSiglaVeiculo(String siglaVeiculo) {
-        this.siglaVeiculo = siglaVeiculo;
-    }
-    
+   
 }
