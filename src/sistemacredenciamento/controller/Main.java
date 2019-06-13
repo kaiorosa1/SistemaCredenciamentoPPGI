@@ -4,7 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistemacredenciamento.model.*;
 
 /*
@@ -25,13 +30,17 @@ public class Main {
     public static void main(String[] args) {
        // Read Files and create the objects
        String fileName = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\docentes.csv";
-       readDocentes(fileName);
+        try {
+            readDocentes(fileName);
+        } catch (ParseException ex) {
+            System.out.println("Error ao converter data");
+        }
        
        
        
     }
     
-    public static void readDocentes(String fName){
+    public static void readDocentes(String fName) throws ParseException{
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
@@ -45,8 +54,8 @@ public class Main {
 
                 // use comma as separator
                 String[] codigo = line.split(cvsSplitBy);
-
-                System.out.println(codigo[0]);
+                System.out.println(codigo[3]);
+                //listaDocentes.add( new Docente(Long.parseLong(codigo[0]), codigo[1],new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2]),false));
 
             }
 

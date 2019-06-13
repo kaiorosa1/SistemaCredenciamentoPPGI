@@ -12,22 +12,33 @@ import java.util.Date;
  * @author Kaio Rosa
  */
 public class Docente {
-    private int codigo;
+    private long codigo;
     private String nome;
+    private Date dataNacimeto;
     private Date dataIngresso;
     private boolean isCordenador;
 
-    
-    public Docente(int codigo, String nome, Date dataIngresso, boolean isCordenador) {
+    public Docente(long codigo, String nome, Date dataNacimeto, Date dataIngresso, boolean isCordenador) {
         this.codigo = codigo;
         this.nome = nome;
+        this.dataNacimeto = dataNacimeto;
         this.dataIngresso = dataIngresso;
         this.isCordenador = isCordenador;
     }
 
     
     
-    public int getCodigo() {
+    public Date getDataNacimeto() {
+        return dataNacimeto;
+    }
+
+    public void setDataNacimeto(Date dataNacimeto) {
+        this.dataNacimeto = dataNacimeto;
+    }
+
+    
+    
+    public long getCodigo() {
         return codigo;
     }
 
