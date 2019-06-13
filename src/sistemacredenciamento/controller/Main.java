@@ -33,14 +33,18 @@ public class Main {
        // Read Files and create the objects
        String docentesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\docentes.csv";
        String veiculosFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\veiculos.csv";
+       String publicacoesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\publicacoes.csv";
+       String qualificacoesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\qualis.csv";
+       String regrasFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\regras.csv";
        
        List<Docente> listaDocentes = null;
        List<Veiculo> listaVeiculos = null;
+       List<Publicacao> listaPublicacoes = null;
         
        try {
             listaDocentes = readDocentes(docentesFile);
             listaVeiculos = readVeiculos(veiculosFile);
-            // ler publicacoes file
+            listaPublicacoes = readPublicacoes(publicacoesFile,listaDocentes,listaVeiculos);
             // ler qualificacoes file
             // ler regras de pontuacao file
             
@@ -49,8 +53,8 @@ public class Main {
         }
        
        
-//       printListaDocente(listaDocentes);
-//       printListaVeiculos(listaVeiculos);
+        //printListaDocente(listaDocentes);
+        printListaVeiculos(listaVeiculos);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -113,6 +117,39 @@ public class Main {
         return listaVeiculos;
     }
     
+    public static List<Publicacao> readPublicacoes(String fName,   List<Docente> ld, List<Veiculo> lv) throws ParseException{
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ";";
+        
+        List<Publicacao> listaPublicacoes = new ArrayList<>();
+        
+        try {
+
+            br = new BufferedReader(new FileReader(fName));
+            // header of the file
+            line = br.readLine();
+            while ((line = br.readLine()) != null) {
+
+                String[] codigo = line.split(cvsSplitBy,'\n');
+                
+                // codigo[0] ano
+                // codigo[1] sigla veiculo
+                // codigo[2] titulo 
+                // codigo[3] codigo autores
+                // codigo[4] numero
+                // codigo[5] volume  if  tipo veiculo P 
+                // codigo[6] local if tipo veiculo C
+                // codigo[7] pag inicial if  tipo veiculo P 
+                // codigo[8] pag final if  tipo veiculo P 
+            }
+
+        } catch (IOException | NumberFormatException e) {
+            System.out.println( e.getMessage());       
+        } 
+        
+        return listaPublicacoes;
+    }
     
     
     
@@ -126,7 +163,7 @@ public class Main {
     public static void printListaVeiculos(List<Veiculo> list){
         
         list.forEach((l) -> {
-            System.out.println(l.getSigla() + " "+ l.getNome());
+            System.out.println(l.getSigla() + " "+ l.getNome() + " "+ l.getTipo());
         });
         
     }
