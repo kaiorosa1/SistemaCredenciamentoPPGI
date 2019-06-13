@@ -50,6 +50,7 @@ public class Main {
        
        
 //       printListaDocente(listaDocentes);
+//       printListaVeiculos(listaVeiculos);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -78,7 +79,8 @@ public class Main {
             }
 
         } catch (Exception e) {
-            System.out.println("Error ao ler docentes.csv");
+             System.out.println( e.getMessage());
+            
         } 
         
         return listaDocentes;
@@ -89,7 +91,7 @@ public class Main {
         String line = "";
         String cvsSplitBy = ";";
         
-        List<Veiculo> listaDocentes = new ArrayList<>();
+        List<Veiculo> listaVeiculos = new ArrayList<>();
         
         try {
 
@@ -99,16 +101,16 @@ public class Main {
             while ((line = br.readLine()) != null) {
 
                 String[] codigo = line.split(cvsSplitBy,'\n');
-               
                 
+                listaVeiculos.add(new Veiculo(codigo[0].trim(),codigo[1].trim(),codigo[2].charAt(0),Double.parseDouble(codigo[3].trim().replace(',', '.')),codigo[4].trim()));
                 
             }
 
-        } catch (Exception e) {
-            System.out.println("Error ao ler veiculos.csv");
+        } catch (IOException | NumberFormatException e) {
+            System.out.println( e.getMessage());       
         } 
         
-        return listaDocentes;
+        return listaVeiculos;
     }
     
     
@@ -118,6 +120,13 @@ public class Main {
         
         list.forEach((l) -> {
             System.out.println(l.getNome());
+        });
+        
+    }
+    public static void printListaVeiculos(List<Veiculo> list){
+        
+        list.forEach((l) -> {
+            System.out.println(l.getSigla() + " "+ l.getNome());
         });
         
     }
