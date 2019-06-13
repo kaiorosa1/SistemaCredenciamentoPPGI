@@ -13,25 +13,44 @@ import java.util.List;
  */
 public class Publicacao {
     private int ano;
-    private String siglaVeiculo;
+    private Veiculo veiculoPublicacao;
     private String titulo;
-    List<Docente> listaAutores;
+    private List<Docente> listaAutores;
     private int numero;
+    private int paginalInical;
+    private int paginaFinal;
 
-    public Publicacao(int ano, String siglaVeiculo, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
+    public Publicacao(int ano, Veiculo veiculoPublicacao, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
         this.ano = ano;
-        this.siglaVeiculo = siglaVeiculo;
+        this.veiculoPublicacao = veiculoPublicacao;
         this.titulo = titulo;
         this.listaAutores = listaAutores;
         this.numero = numero;
         this.paginalInical = paginalInical;
         this.paginaFinal = paginaFinal;
     }
-    
-   
-    private int paginalInical;
-    private int paginaFinal;
 
+    
+    
+    
+    public Veiculo getVeiculoPublicacao() {
+        return veiculoPublicacao;
+    }
+
+    public void setVeiculoPubicacao(Veiculo veiculoPublicacao) {
+        this.veiculoPublicacao = veiculoPublicacao;
+    }
+
+    public List<Docente> getListaAutores() {
+        return listaAutores;
+    }
+
+    public void setListaAutores(List<Docente> listaAutores) {
+        this.listaAutores = listaAutores;
+    }
+
+    
+    
     public int getAno() {
         return ano;
     }
@@ -40,13 +59,6 @@ public class Publicacao {
         this.ano = ano;
     }
 
-    public String getSiglaVeiculo() {
-        return siglaVeiculo;
-    }
-
-    public void setSiglaVeiculo(String siglaVeiculo) {
-        this.siglaVeiculo = siglaVeiculo;
-    }
 
     public String getTitulo() {
         return titulo;

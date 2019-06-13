@@ -14,11 +14,12 @@ import java.util.List;
 public class Periodico extends Publicacao {
     private int volumePeriodico;
 
-    public Periodico(int volumePeriodico, int ano, String siglaVeiculo, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
-        super(ano, siglaVeiculo, titulo, listaAutores, numero, paginalInical, paginaFinal);
+    public Periodico(int volumePeriodico, int ano, Veiculo veiculoPublicacao, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
+        super(ano, veiculoPublicacao, titulo, listaAutores, numero, paginalInical, paginaFinal);
         this.volumePeriodico = volumePeriodico;
     }
 
+    
     public int getVolumePeriodico() {
         return volumePeriodico;
     }
