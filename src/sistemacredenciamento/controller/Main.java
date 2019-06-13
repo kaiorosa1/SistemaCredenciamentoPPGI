@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,7 +32,8 @@ public class Main {
        // Read Files and create the objects
        String fileName = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\docentes.csv";
         try {
-            readDocentes(fileName);
+            List<Docente> listaDocentes = readDocentes(fileName);
+            
         } catch (ParseException ex) {
             System.out.println("Error ao converter data");
         }
@@ -40,38 +42,34 @@ public class Main {
        
     }
     
-    public static void readDocentes(String fName) throws ParseException{
+    public static List<Docente> readDocentes(String fName) throws ParseException{
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
         
-        List<Docente> listaDocentes = null;
+        List<Docente> listaDocentes = new ArrayList<>();
         
         try {
 
             br = new BufferedReader(new FileReader(fName));
+            // header of the file
+            line = br.readLine();
             while ((line = br.readLine()) != null) {
 
-                // use comma as separator
                 String[] codigo = line.split(cvsSplitBy);
-                System.out.println(codigo[3]);
-                //listaDocentes.add( new Docente(Long.parseLong(codigo[0]), codigo[1],new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2]),false));
-
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if(codigo[4].equals("X")){
+                    listaDocentes.add( new Docente(Long.parseLong(codigo[0]), codigo[1],new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2]),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[3]),true));
+                }else{
+                    listaDocentes.add( new Docente(Long.parseLong(codigo[0]), codigo[1],new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2]),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[3]),false));
+                
                 }
             }
-        }
+
+        } catch (Exception e) {
+            System.out.println("Error ");
+        } 
+        
+        return listaDocentes;
     }
 }
 
