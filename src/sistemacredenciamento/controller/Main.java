@@ -41,14 +41,14 @@ public class Main {
        List<Veiculo> listaVeiculos = null;
        List<Publicacao> listaPublicacoes = null;
        List<Qualificacao> listaQualificacoes = null;
-        
+       RegrasPontuacao regras = null;
        try {
             listaDocentes = readDocentes(docentesFile);
             listaVeiculos = readVeiculos(veiculosFile);
-            listaPublicacoes = readPublicacoes(publicacoesFile,listaDocentes,listaVeiculos);
+            listaPublicacoes = readPublicacoes(publicacoesFile,listaDocentes, listaVeiculos);
             listaQualificacoes = readQualificacoes(qualificacoesFile, listaVeiculos);
-            
-            // ler regras de pontuacao file
+            regras = readRegras(regrasFile,listaQualificacoes);
+           
             
         } catch (ParseException e) {
              System.out.println(e.getMessage());
@@ -236,6 +236,34 @@ public class Main {
         } 
         
         return listaQualificacoes;
+    }
+    
+    public static RegrasPontuacao readRegras(String fName, List<Qualificacao> lg)throws ParseException{
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ";";
+        
+        RegrasPontuacao regrasPontuacao = null;
+        
+        try {
+
+            br = new BufferedReader(new FileReader(fName));
+            // header of the file
+            line = br.readLine();
+            while ((line = br.readLine()) != null) {
+
+                String[] codigo = line.split(cvsSplitBy,'\n');
+                
+            
+            }
+
+        } catch (Exception e) {
+            
+            System.out.println(e.getMessage());
+            
+        } 
+        
+        return regrasPontuacao;
     }
     
     public static void printListaDocente(List<Docente> list){
