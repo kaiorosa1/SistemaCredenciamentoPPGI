@@ -59,6 +59,7 @@ public class Main {
         //printListaVeiculos(listaVeiculos);
         //printListaPublicacoes(listaPublicacoes);
         //printListaQualificacoes(listaQualificacoes);
+        //printRegras(regras);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -253,19 +254,34 @@ public class Main {
             while ((line = br.readLine()) != null) {
 
                 String[] codigo = line.split(cvsSplitBy,'\n');
-                
+                    
                 Date dataInicio = new SimpleDateFormat("dd/MM/yyyy").parse(codigo[0].trim());
                 Date dataFinal = new SimpleDateFormat("dd/MM/yyyy").parse(codigo[1].trim());
                 // qualis - pontos codigo[2] e codigo[3]
+                // adiconar os Qualis aceitaveis;
+                List<Qualis> listaQualis = new ArrayList<>();
                 String[] qualisNome;
                 qualisNome = codigo[2].split(",");
                 String[] qualisPontos;
                 qualisPontos = codigo[3].split(",");
-                
-                double multiplicador = Double.parseDouble(codigo[4].trim());
+                String[] qualisAceitos = {"A1","A2","B1","B2","B3","B4","B5","C"};
+                // handle case qualisNome has some string that's not in qualisAceitos - it should throw an error
+                int head=0;
+                for(int i =0; i < qualisAceitos.length; i++){
+                    Qualis q = new Qualis(qualisAceitos[i]);
+                    if(qualisNome[head].equals(qualisAceitos[i])){
+                        head++;
+                        q.setPontoQualis(Integer.parseInt(qualisPontos[head-1]));
+   
+                    }else{
+                        q.setPontoQualis(Integer.parseInt(qualisPontos[head-1]));
+                    }
+                    listaQualis.add(q);
+                }
+                double multiplicador = Double.parseDouble(codigo[4].trim().replace(',', '.'));
                 int anosConsiderar = Integer.parseInt(codigo[5].trim());
                 int minimoPontosRecadastramento = Integer.parseInt(codigo[6].trim());
-                //regrasPontuacao = new RegrasPontuacao(dataInicio,dataFinal,,multiplicador,anosConsiderar,minimoPontosRecadastramento);
+                regrasPontuacao = new RegrasPontuacao(dataInicio,dataFinal,listaQualis,multiplicador,anosConsiderar,minimoPontosRecadastramento);
             }
 
         } catch (Exception e) {
@@ -308,6 +324,25 @@ public class Main {
         list.forEach((l) -> {
             System.out.println(l.getAno() + " " + l.getVeiculoQualificacao().getNome() +" "+l.getQualis().getSiglaQualis());
         });
+        
+    }
+     public static void printRegras(RegrasPontuacao r){
+        
+        System.out.println("----------PRINT REGRAS----------");
+        System.out.println("Inicio Vigencia:");
+        System.out.println(r.getDataInicio());
+        System.out.println("Fim Vigencia:");
+        System.out.println(r.getDataFim());
+        System.out.println("Lista de Qualis e Pontos:");
+        for(Qualis q:r.getListaQualis()){
+            System.out.println(q.getSiglaQualis() + " "+ q.getPontoQualis());
+        }
+        System.out.println("Multiplicador:");
+        System.out.println(r.getMultiplicadorPeridicos());
+        System.out.println("Pontuacao Minima para Recadastro:");
+        System.out.println(r.getPontuacaoMinimaRecredenciamento());
+        System.out.println("Anos a Considerar:");
+        System.out.println(r.getQuantidadeDeAnosConsiderar());
         
     }
      
