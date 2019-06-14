@@ -40,12 +40,14 @@ public class Main {
        List<Docente> listaDocentes = null;
        List<Veiculo> listaVeiculos = null;
        List<Publicacao> listaPublicacoes = null;
+       List<Qualificacao> listaQualificacoes = null;
         
        try {
             listaDocentes = readDocentes(docentesFile);
             listaVeiculos = readVeiculos(veiculosFile);
             listaPublicacoes = readPublicacoes(publicacoesFile,listaDocentes,listaVeiculos);
-            // ler qualificacoes file
+            listaQualificacoes = readQualificacoes(qualificacoesFile);
+            
             // ler regras de pontuacao file
             
         } catch (ParseException e) {
@@ -55,6 +57,7 @@ public class Main {
        
         //printListaDocente(listaDocentes);
         //printListaVeiculos(listaVeiculos);
+        //printListaPublicacoes(listaPublicacoes);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -198,7 +201,32 @@ public class Main {
         return listaPublicacoes;
     }
     
-    
+    public static List<Qualificacao> readQualificacoes(String fName) throws ParseException{
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ";";
+        
+        List<Qualificacao> listaQualificacoes = new ArrayList<>();
+        
+        try {
+
+            br = new BufferedReader(new FileReader(fName));
+            // header of the file
+            line = br.readLine();
+            while ((line = br.readLine()) != null) {
+
+                String[] codigo = line.split(cvsSplitBy,'\n');
+               
+               
+            }
+
+        } catch (Exception e) {
+             System.out.println( e.getMessage());
+            
+        } 
+        
+        return listaQualificacoes;
+    }
     
     public static void printListaDocente(List<Docente> list){
         
@@ -211,6 +239,18 @@ public class Main {
         
         list.forEach((l) -> {
             System.out.println(l.getSigla() + " "+ l.getNome() + " "+ l.getTipo());
+        });
+        
+    }
+    
+     public static void printListaPublicacoes(List<Publicacao> list){
+        
+        list.forEach((l) -> {
+            System.out.println(l.getTitulo());
+            System.out.println("Autores Publicacao");
+            for(Docente d :l.getListaAutores()){
+                System.out.println(d.getNome());
+            }
         });
         
     }
