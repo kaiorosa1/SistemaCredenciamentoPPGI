@@ -13,11 +13,34 @@ import java.util.List;
  */
 public class Periodico extends Publicacao {
     private int volumePeriodico;
+    private int paginalInical;
+    private int paginaFinal;
 
-    public Periodico(int volumePeriodico, int ano, Veiculo veiculoPublicacao, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
-        super(ano, veiculoPublicacao, titulo, listaAutores, numero, paginalInical, paginaFinal);
+    public Periodico(int volumePeriodico, int paginalInical, int paginaFinal, int ano, Veiculo veiculoPublicacao, String titulo, List<Docente> listaAutores, int numero) {
+        super(ano, veiculoPublicacao, titulo, listaAutores, numero);
         this.volumePeriodico = volumePeriodico;
+        this.paginalInical = paginalInical;
+        this.paginaFinal = paginaFinal;
     }
+
+    
+    
+    public int getPaginalInical() {
+        return paginalInical;
+    }
+
+    public void setPaginalInical(int paginalInical) {
+        this.paginalInical = paginalInical;
+    }
+
+    public int getPaginaFinal() {
+        return paginaFinal;
+    }
+
+    public void setPaginaFinal(int paginaFinal) {
+        this.paginaFinal = paginaFinal;
+    }
+    
 
     
     public int getVolumePeriodico() {

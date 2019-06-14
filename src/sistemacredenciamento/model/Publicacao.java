@@ -17,17 +17,14 @@ public class Publicacao {
     private String titulo;
     private List<Docente> listaAutores;
     private int numero;
-    private int paginalInical;
-    private int paginaFinal;
 
-    public Publicacao(int ano, Veiculo veiculoPublicacao, String titulo, List<Docente> listaAutores, int numero, int paginalInical, int paginaFinal) {
+    public Publicacao(int ano, Veiculo veiculoPublicacao, String titulo, List<Docente> listaAutores, int numero) {
         this.ano = ano;
         this.veiculoPublicacao = veiculoPublicacao;
         this.titulo = titulo;
         this.listaAutores = listaAutores;
         this.numero = numero;
-        this.paginalInical = paginalInical;
-        this.paginaFinal = paginaFinal;
+        
     }
 
     
@@ -74,23 +71,6 @@ public class Publicacao {
 
     public void setNumero(int numero) {
         this.numero = numero;
-    }
-
-
-    public int getPaginalInical() {
-        return paginalInical;
-    }
-
-    public void setPaginalInical(int paginalInical) {
-        this.paginalInical = paginalInical;
-    }
-
-    public int getPaginaFinal() {
-        return paginaFinal;
-    }
-
-    public void setPaginaFinal(int paginaFinal) {
-        this.paginaFinal = paginaFinal;
     }
     
     

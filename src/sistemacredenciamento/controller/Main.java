@@ -48,13 +48,13 @@ public class Main {
             // ler qualificacoes file
             // ler regras de pontuacao file
             
-        } catch (ParseException ex) {
-            System.out.println("Error ao converter data");
+        } catch (ParseException e) {
+             System.out.println(e.getMessage());
         }
        
        
         //printListaDocente(listaDocentes);
-        printListaVeiculos(listaVeiculos);
+        //printListaVeiculos(listaVeiculos);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -117,7 +117,7 @@ public class Main {
         return listaVeiculos;
     }
     
-    public static List<Publicacao> readPublicacoes(String fName,   List<Docente> ld, List<Veiculo> lv) throws ParseException{
+    public static List<Publicacao> readPublicacoes(String fName, List<Docente> ld, List<Veiculo> lv) throws ParseException{
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
@@ -134,18 +134,65 @@ public class Main {
                 String[] codigo = line.split(cvsSplitBy,'\n');
                 
                 // codigo[0] ano
+                int ano = Integer.parseInt(codigo[0].trim());
+                
                 // codigo[1] sigla veiculo
+                Veiculo veiculoPublicacao = lv.get(0);
+                // busca veiculo com  a sigla do arquivo de entrada
+                for (Veiculo v : lv) {
+                    if(v.getSigla().equals(codigo[1].trim())){
+                        veiculoPublicacao = v;
+                    }
+                }
+                
                 // codigo[2] titulo 
+                String titulo = codigo[2].trim();
+                
                 // codigo[3] codigo autores
+                // cria uma lista de autores 
+                List<Docente> listaAutores = new ArrayList<>();
+                // busca docentes com os codigos dados e adiciona na lista de autores
+                String[] listaCodigoAutores;
+                
+                listaCodigoAutores = codigo[3].trim().split(",");
+                
+                for (String codAutor : listaCodigoAutores) {
+                    // para cada codigo da publicacao encontrar o docente associado
+                    for(Docente d : ld){
+                        // encontrado o autor adicionar na lista de autores dessa publicacao
+                        if(d.getCodigo() == Long.parseLong(codAutor)){
+                            listaAutores.add(d);
+                        }
+                    }
+                }
+                
                 // codigo[4] numero
-                // codigo[5] volume  if  tipo veiculo P 
-                // codigo[6] local if tipo veiculo C
-                // codigo[7] pag inicial if  tipo veiculo P 
-                // codigo[8] pag final if  tipo veiculo P 
+                int numero = Integer.parseInt(codigo[4]);
+
+                if(veiculoPublicacao.getTipo() == 'P'){
+                    
+                    // codigo[5] volume  if  tipo veiculo P 
+                    int volume = Integer.parseInt(codigo[5]);
+                    // codigo[7] pag inicial if  tipo veiculo P
+                    int pagInicial = Integer.parseInt(codigo[7]);
+                    // codigo[8] pag final if  tipo veiculo P
+                    int pagFinal = Integer.parseInt(codigo[8]);
+                    listaPublicacoes.add(new Periodico(volume,pagInicial,pagFinal,ano,veiculoPublicacao,titulo,listaAutores,numero));
+                
+                }else if(veiculoPublicacao.getTipo() == 'C'){
+                    
+                    // codigo[6] local if tipo veiculo C
+                    String local = codigo[6];
+                    listaPublicacoes.add(new Conferencia(local,ano,veiculoPublicacao,titulo,listaAutores,numero));
+                   
+                }
+                
+                 
+                
             }
 
         } catch (IOException | NumberFormatException e) {
-            System.out.println( e.getMessage());       
+            System.out.println(e.getMessage());       
         } 
         
         return listaPublicacoes;
