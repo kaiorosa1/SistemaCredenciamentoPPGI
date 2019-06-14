@@ -46,7 +46,7 @@ public class Main {
             listaDocentes = readDocentes(docentesFile);
             listaVeiculos = readVeiculos(veiculosFile);
             listaPublicacoes = readPublicacoes(publicacoesFile,listaDocentes,listaVeiculos);
-            listaQualificacoes = readQualificacoes(qualificacoesFile);
+            listaQualificacoes = readQualificacoes(qualificacoesFile, listaVeiculos);
             
             // ler regras de pontuacao file
             
@@ -58,6 +58,7 @@ public class Main {
         //printListaDocente(listaDocentes);
         //printListaVeiculos(listaVeiculos);
         //printListaPublicacoes(listaPublicacoes);
+        printListaQualificacoes(listaQualificacoes);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -201,7 +202,7 @@ public class Main {
         return listaPublicacoes;
     }
     
-    public static List<Qualificacao> readQualificacoes(String fName) throws ParseException{
+    public static List<Qualificacao> readQualificacoes(String fName, List<Veiculo> lv) throws ParseException{
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
@@ -216,12 +217,21 @@ public class Main {
             while ((line = br.readLine()) != null) {
 
                 String[] codigo = line.split(cvsSplitBy,'\n');
-               
-               
+                int ano = Integer.parseInt(codigo[0].trim());
+                Veiculo veiculoQualificacao = null;
+                for(Veiculo v : lv){
+                    if(v.getSigla().equals(codigo[1].trim())){
+                        veiculoQualificacao = v;
+                    }
+                }
+                Qualis qualisQualificacao = new Qualis(codigo[2].trim());
+                
+                listaQualificacoes.add(new Qualificacao(ano,veiculoQualificacao,qualisQualificacao));
             }
 
         } catch (Exception e) {
-             System.out.println( e.getMessage());
+            System.out.println("Error");
+            System.out.println(e.getMessage());
             
         } 
         
@@ -235,6 +245,7 @@ public class Main {
         });
         
     }
+    
     public static void printListaVeiculos(List<Veiculo> list){
         
         list.forEach((l) -> {
@@ -251,8 +262,15 @@ public class Main {
             for(Docente d :l.getListaAutores()){
                 System.out.println(d.getNome());
             }
+        }); 
+    }
+     public static void printListaQualificacoes(List<Qualificacao> list){
+        
+        list.forEach((l) -> {
+            System.out.println(l.getAno() + " " + l.getVeiculoQualificacao().getNome() +" "+l.getQualis().getSiglaQualis());
         });
         
     }
+     
 }
 
