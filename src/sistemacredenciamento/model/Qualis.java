@@ -11,7 +11,7 @@ package sistemacredenciamento.model;
  */
 public class Qualis {
     private String siglaQualis;
-
+    
     public Qualis(String siglaQualis) {
         this.siglaQualis = siglaQualis;
     }

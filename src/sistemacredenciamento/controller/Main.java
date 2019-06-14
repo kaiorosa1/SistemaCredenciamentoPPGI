@@ -58,7 +58,7 @@ public class Main {
         //printListaDocente(listaDocentes);
         //printListaVeiculos(listaVeiculos);
         //printListaPublicacoes(listaPublicacoes);
-        printListaQualificacoes(listaQualificacoes);
+        //printListaQualificacoes(listaQualificacoes);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -254,7 +254,18 @@ public class Main {
 
                 String[] codigo = line.split(cvsSplitBy,'\n');
                 
-            
+                Date dataInicio = new SimpleDateFormat("dd/MM/yyyy").parse(codigo[0].trim());
+                Date dataFinal = new SimpleDateFormat("dd/MM/yyyy").parse(codigo[1].trim());
+                // qualis - pontos codigo[2] e codigo[3]
+                String[] qualisNome;
+                qualisNome = codigo[2].split(",");
+                String[] qualisPontos;
+                qualisPontos = codigo[3].split(",");
+                
+                double multiplicador = Double.parseDouble(codigo[4].trim());
+                int anosConsiderar = Integer.parseInt(codigo[5].trim());
+                int minimoPontosRecadastramento = Integer.parseInt(codigo[6].trim());
+                //regrasPontuacao = new RegrasPontuacao(dataInicio,dataFinal,,multiplicador,anosConsiderar,minimoPontosRecadastramento);
             }
 
         } catch (Exception e) {
