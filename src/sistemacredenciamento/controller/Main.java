@@ -46,8 +46,9 @@ public class Main {
             listaDocentes = readDocentes(docentesFile);
             listaVeiculos = readVeiculos(veiculosFile);
             listaPublicacoes = readPublicacoes(publicacoesFile,listaDocentes, listaVeiculos);
-            listaQualificacoes = readQualificacoes(qualificacoesFile, listaVeiculos);
-            regras = readRegras(regrasFile,listaQualificacoes);
+            regras = readRegras(regrasFile);
+            listaQualificacoes = readQualificacoes(qualificacoesFile, listaVeiculos,regras);
+            
            
             
         } catch (ParseException e) {
@@ -199,7 +200,7 @@ public class Main {
         return listaPublicacoes;
     }
     
-    public static List<Qualificacao> readQualificacoes(String fName, List<Veiculo> lv) throws ParseException{
+    public static List<Qualificacao> readQualificacoes(String fName, List<Veiculo> lv, RegrasPontuacao regras) throws ParseException{
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
@@ -222,7 +223,12 @@ public class Main {
                     }
                 }
                 Qualis qualisQualificacao = new Qualis(codigo[2].trim());
-                
+                // encontra o qualis na regra e pontua em cada Qualificacao
+                for(Qualis q: regras.getListaQualis()){
+                    if(q.getSiglaQualis().equals(qualisQualificacao.getSiglaQualis())){
+                        qualisQualificacao.setPontoQualis(q.getPontoQualis());
+                    }
+                }
                 listaQualificacoes.add(new Qualificacao(ano,veiculoQualificacao,qualisQualificacao));
             }
 
@@ -235,7 +241,7 @@ public class Main {
         return listaQualificacoes;
     }
     
-    public static RegrasPontuacao readRegras(String fName, List<Qualificacao> lg)throws ParseException{
+    public static RegrasPontuacao readRegras(String fName)throws ParseException{
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";

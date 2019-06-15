@@ -82,4 +82,11 @@ public class Docente {
         }
         return listaPublicacaoAutor;
     }
+    
+    public double getPontuacaoDocente(List<Publicacao> publi,List<Qualificacao> lp){
+        double pontosAutor=0;
+        return pontosAutor;
+    }
+    
+    
 }
