@@ -5,7 +5,9 @@
  */
 package sistemacredenciamento.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -70,5 +72,14 @@ public class Docente {
         this.isCordenador = isCordenador;
     }
     
-    
+    public List<Publicacao> getListaPublicacoesDocente(List<Publicacao> lp){
+        List<Publicacao> listaPublicacaoAutor = new ArrayList<>();
+        
+        for(Publicacao p : lp){
+            if(p.getListaAutores().contains(this)){
+                listaPublicacaoAutor.add(p);
+            }
+        }
+        return listaPublicacaoAutor;
+    }
 }

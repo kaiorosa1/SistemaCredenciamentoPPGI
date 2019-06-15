@@ -18,13 +18,7 @@ public class Qualis {
         this.siglaQualis = siglaQualis;
     }
 
-    public int getPontoQualis() {
-        return pontoQualis;
-    }
-
-    public void setPontoQualis(int pontoQualis) {
-        this.pontoQualis = pontoQualis;
-    }
+    
     
     
     public String getSiglaQualis() {
@@ -35,8 +29,13 @@ public class Qualis {
         this.siglaQualis = siglaQualis;
     }
     
-    
-    public void setPontuacaoQualis(){
-        // solves the issues concerning to calculate the range of points
+    public int getPontoQualis() {
+        return pontoQualis;
     }
+
+    public void setPontoQualis(int pontoQualis) {
+        this.pontoQualis = pontoQualis;
+    }
+    
+    
 }

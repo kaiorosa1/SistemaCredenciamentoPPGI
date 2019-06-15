@@ -55,11 +55,7 @@ public class Main {
         }
        
        
-        //printListaDocente(listaDocentes);
-        //printListaVeiculos(listaVeiculos);
-        //printListaPublicacoes(listaPublicacoes);
-        //printListaQualificacoes(listaQualificacoes);
-        //printRegras(regras);
+        writeRecadastramento(listaDocentes,listaPublicacoes,listaQualificacoes,regras);
     }
     
     public static List<Docente> readDocentes(String fName) throws ParseException{
@@ -345,6 +341,19 @@ public class Main {
         System.out.println(r.getQuantidadeDeAnosConsiderar());
         
     }
-     
+    
+    public static void writeRecadastramento(List<Docente> listaDocentes,List<Publicacao>listaPublicacoes,List<Qualificacao> listaQualificacoes, RegrasPontuacao regras){
+        
+        for(Docente d: listaDocentes){
+        System.out.println(d.getNome().toUpperCase());
+        System.out.println("--------------------");
+        System.out.println("Lista de publicacoes");
+        System.out.println("--------------------");
+        for(Publicacao p: d.getListaPublicacoesDocente(listaPublicacoes)){
+            System.out.println(p.getTitulo());
+        }
+        System.out.println("=============================================");
+        }
+    }
 }
 
