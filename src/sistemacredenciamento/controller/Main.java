@@ -355,9 +355,10 @@ public class Main {
         System.out.println("--------------------");
         System.out.println("Lista de publicacoes");
         System.out.println("--------------------");
-        for(Publicacao p: d.getListaPublicacoesDocente(listaPublicacoes)){
-            System.out.println(p.getTitulo());
-        }
+//        for(Publicacao p: d.getListaPublicacoesDocente(listaPublicacoes)){
+//            System.out.println(p.getTitulo());
+//        }
+        d.getPontuacaoDocente(d.getListaPublicacoesDocente(listaPublicacoes), listaQualificacoes, regras);
         System.out.println("=============================================");
         }
     }

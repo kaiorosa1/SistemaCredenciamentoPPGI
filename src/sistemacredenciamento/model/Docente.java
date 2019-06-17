@@ -6,6 +6,7 @@
 package sistemacredenciamento.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -83,8 +84,21 @@ public class Docente {
         return listaPublicacaoAutor;
     }
     
-    public double getPontuacaoDocente(List<Publicacao> publi,List<Qualificacao> lp){
+    public double getPontuacaoDocente(List<Publicacao> publi,List<Qualificacao> lq,RegrasPontuacao r){
         double pontosAutor=0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(r.getDataInicio());
+        int anoMinimo = calendar.get(Calendar.YEAR) -r.getQuantidadeDeAnosConsiderar();
+        
+        for(Publicacao p : publi){
+            for(Qualificacao q : lq){
+                if(p.getVeiculoPublicacao().equals(q.getVeiculoQualificacao()) && p.getAno() >= anoMinimo){
+                    pontosAutor+= q.getQualis().getPontoQualis();
+                }
+            }
+             
+        }
+        System.out.println("PontosAutor: "+ pontosAutor);
         return pontosAutor;
     }
     
