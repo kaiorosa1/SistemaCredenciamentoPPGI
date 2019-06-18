@@ -14,7 +14,8 @@ import java.util.List;
  *
  * @author Kaio Rosa
  */
-public class Docente {
+public class Docente implements Comparable<Docente> {
+
     private long codigo;
     private String nome;
     private Date dataNacimeto;
@@ -29,8 +30,6 @@ public class Docente {
         this.isCordenador = isCordenador;
     }
 
-    
-    
     public Date getDataNacimeto() {
         return dataNacimeto;
     }
@@ -39,8 +38,6 @@ public class Docente {
         this.dataNacimeto = dataNacimeto;
     }
 
-    
-    
     public long getCodigo() {
         return codigo;
     }
@@ -72,42 +69,46 @@ public class Docente {
     public void setIsCordenador(boolean isCordenador) {
         this.isCordenador = isCordenador;
     }
-    
-    public List<Publicacao> getListaPublicacoesDocente(List<Publicacao> lp){
+
+    public List<Publicacao> getListaPublicacoesDocente(List<Publicacao> lp) {
         List<Publicacao> listaPublicacaoAutor = new ArrayList<>();
-        for(Publicacao p : lp){
-            if(p.getListaAutores().contains(this)){
-                
+        for (Publicacao p : lp) {
+            if (p.getListaAutores().contains(this)) {
+
                 listaPublicacaoAutor.add(p);
             }
         }
         return listaPublicacaoAutor;
     }
-    
-    public int getPontuacaoDocente(List<Publicacao> publi,List<Qualificacao> lq,RegrasPontuacao r){
-        int pontosAutor=0;
+
+    public double getPontuacaoDocente(List<Publicacao> publi, List<Qualificacao> lq, RegrasPontuacao r) {
+        double pontosAutor = 0;
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(r.getDataInicio());
-        int anoMinimo = calendar.get(Calendar.YEAR) -r.getQuantidadeDeAnosConsiderar();
-   
-        for(Publicacao p : publi){
-            
-            for(Qualificacao q : lq){
-                if(p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla()) && p.getAno() >= anoMinimo){
-                    if(p.getVeiculoPublicacao().getTipo() =='P'){
-                        pontosAutor += q.getQualis().getPontoQualis()*r.getMultiplicadorPeridicos();
-                
-                    }else{
+        int anoMinimo = calendar.get(Calendar.YEAR) - r.getQuantidadeDeAnosConsiderar();
+
+        for (Publicacao p : publi) {
+
+            for (Qualificacao q : lq) {
+                if (p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla()) && p.getAno() >= anoMinimo) {
+                    if (p.getVeiculoPublicacao().getTipo() == 'P') {
+                        pontosAutor += q.getQualis().getPontoQualis() * r.getMultiplicadorPeridicos();
+
+                    } else {
                         pontosAutor += q.getQualis().getPontoQualis();
                     }
-                  
+
                 }
             }
-             
+
         }
- 
+
         return pontosAutor;
     }
-    
-    
+
+    @Override
+    public int compareTo(Docente d) {
+        return this.getNome().compareTo(d.getNome());
+    }
+
 }
