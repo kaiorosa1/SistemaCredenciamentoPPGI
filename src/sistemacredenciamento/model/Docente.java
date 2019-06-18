@@ -90,7 +90,7 @@ public class Docente implements Comparable<Docente> {
         for (Publicacao p : publi) {
 
             for (Qualificacao q : lq) {
-                if (p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla()) && p.getAno() >= anoMinimo) {
+                if (p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla()) && p.getAno() >= anoMinimo && p.getAno() < calendar.get(Calendar.YEAR) ) {
                     if (p.getVeiculoPublicacao().getTipo() == 'P') {
                         pontosAutor += q.getQualis().getPontoQualis() * r.getMultiplicadorPeridicos();
 
