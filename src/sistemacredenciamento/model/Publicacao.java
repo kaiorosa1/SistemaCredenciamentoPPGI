@@ -12,6 +12,7 @@ import java.util.List;
  * @author Kaio Rosa
  */
 public class Publicacao {
+
     private int ano;
     private Veiculo veiculoPublicacao;
     private String titulo;
@@ -24,12 +25,9 @@ public class Publicacao {
         this.titulo = titulo;
         this.listaAutores = listaAutores;
         this.numero = numero;
-        
+
     }
 
-    
-    
-    
     public Veiculo getVeiculoPublicacao() {
         return veiculoPublicacao;
     }
@@ -46,8 +44,6 @@ public class Publicacao {
         this.listaAutores = listaAutores;
     }
 
-    
-    
     public int getAno() {
         return ano;
     }
@@ -55,7 +51,6 @@ public class Publicacao {
     public void setAno(int ano) {
         this.ano = ano;
     }
-
 
     public String getTitulo() {
         return titulo;
@@ -72,6 +67,5 @@ public class Publicacao {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-    
-    
+
 }

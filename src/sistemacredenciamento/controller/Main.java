@@ -55,6 +55,7 @@ public class Main {
         }
 
         writeRecadastramento(listaDocentes, listaPublicacoes, listaQualificacoes, regras);
+        writeListaPublicacoes();
     }
 
     public static List<Docente> readDocentes(String fName) throws ParseException {
@@ -256,7 +257,6 @@ public class Main {
 
                 Date dataInicio = new SimpleDateFormat("dd/MM/yyyy").parse(codigo[0].trim());
                 Date dataFinal = new SimpleDateFormat("dd/MM/yyyy").parse(codigo[1].trim());
-                // qualis - pontos codigo[2] e codigo[3]
                 // adiconar os Qualis aceitaveis;
                 List<Qualis> listaQualis = new ArrayList<>();
                 String[] qualisNome;
@@ -352,6 +352,7 @@ public class Main {
         System.out.println("Lista de publicacoes");
         System.out.println("--------------------");
         System.out.println("Docente | Pontuacao | Recredenciameto?");
+        // sort by name
         Collections.sort(listaDocentes);
         for (Docente d : listaDocentes) {
             System.out.print(d.getNome());
@@ -383,5 +384,10 @@ public class Main {
             }
             System.out.println("");
         }
+    }
+
+    private static void writeListaPublicacoes() {
+     // Write lista publicacoes aqui
+     // ano - sigla veiculo -  nome veiculo - qualis - fator de impacto - titulo publicacoes -nome docentes
     }
 }
