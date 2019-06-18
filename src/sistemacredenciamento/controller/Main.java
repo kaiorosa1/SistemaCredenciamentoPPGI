@@ -75,11 +75,11 @@ public class Main {
 
                 String[] codigo = line.split(cvsSplitBy,'\n');
                
-                if(Objects.equals(codigo[4],"X")){
-                    listaDocentes.add( new Docente(Long.parseLong(codigo[0]), codigo[1],new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2]),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[3]),true));
+                if(Objects.equals(codigo[4].trim(),"X")){
+                    listaDocentes.add( new Docente(Long.parseLong(codigo[0].trim()), codigo[1].trim(),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2].trim()),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[3].trim()),true));
                     
                 }else{
-                    listaDocentes.add( new Docente(Long.parseLong(codigo[0]), codigo[1],new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2]),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[3]),false));
+                    listaDocentes.add( new Docente(Long.parseLong(codigo[0].trim()), codigo[1].trim(),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[2].trim()),new SimpleDateFormat("dd/MM/yyyy").parse(codigo[3].trim()),false));
                 
                 }
             }
@@ -169,22 +169,22 @@ public class Main {
                 }
                 
                 // codigo[4] numero
-                int numero = Integer.parseInt(codigo[4]);
+                int numero = Integer.parseInt(codigo[4].trim());
 
                 if(veiculoPublicacao.getTipo() == 'P'){
                     
                     // codigo[5] volume  if  tipo veiculo P 
-                    int volume = Integer.parseInt(codigo[5]);
+                    int volume = Integer.parseInt(codigo[5].trim());
                     // codigo[7] pag inicial if  tipo veiculo P
-                    int pagInicial = Integer.parseInt(codigo[7]);
+                    int pagInicial = Integer.parseInt(codigo[7].trim());
                     // codigo[8] pag final if  tipo veiculo P
-                    int pagFinal = Integer.parseInt(codigo[8]);
+                    int pagFinal = Integer.parseInt(codigo[8].trim());
                     listaPublicacoes.add(new Periodico(volume,pagInicial,pagFinal,ano,veiculoPublicacao,titulo,listaAutores,numero));
                 
                 }else if(veiculoPublicacao.getTipo() == 'C'){
                     
                     // codigo[6] local if tipo veiculo C
-                    String local = codigo[6];
+                    String local = codigo[6].trim();
                     listaPublicacoes.add(new Conferencia(local,ano,veiculoPublicacao,titulo,listaAutores,numero));
                    
                 }
@@ -229,6 +229,7 @@ public class Main {
                         qualisQualificacao.setPontoQualis(q.getPontoQualis());
                     }
                 }
+               
                 listaQualificacoes.add(new Qualificacao(ano,veiculoQualificacao,qualisQualificacao));
             }
 
@@ -355,10 +356,8 @@ public class Main {
         System.out.println("--------------------");
         System.out.println("Lista de publicacoes");
         System.out.println("--------------------");
-//        for(Publicacao p: d.getListaPublicacoesDocente(listaPublicacoes)){
-//            System.out.println(p.getTitulo());
-//        }
-        d.getPontuacaoDocente(d.getListaPublicacoesDocente(listaPublicacoes), listaQualificacoes, regras);
+        int pontosAutor = d.getPontuacaoDocente(d.getListaPublicacoesDocente(listaPublicacoes), listaQualificacoes, regras);
+        System.out.println("Pontos Autor: "+ pontosAutor);
         System.out.println("=============================================");
         }
     }

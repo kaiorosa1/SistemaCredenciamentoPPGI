@@ -75,30 +75,37 @@ public class Docente {
     
     public List<Publicacao> getListaPublicacoesDocente(List<Publicacao> lp){
         List<Publicacao> listaPublicacaoAutor = new ArrayList<>();
-        
         for(Publicacao p : lp){
             if(p.getListaAutores().contains(this)){
+                
                 listaPublicacaoAutor.add(p);
             }
         }
         return listaPublicacaoAutor;
     }
     
-    public double getPontuacaoDocente(List<Publicacao> publi,List<Qualificacao> lq,RegrasPontuacao r){
-        double pontosAutor=0;
+    public int getPontuacaoDocente(List<Publicacao> publi,List<Qualificacao> lq,RegrasPontuacao r){
+        int pontosAutor=0;
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(r.getDataInicio());
         int anoMinimo = calendar.get(Calendar.YEAR) -r.getQuantidadeDeAnosConsiderar();
-        
+   
         for(Publicacao p : publi){
+            
             for(Qualificacao q : lq){
-                if(p.getVeiculoPublicacao().equals(q.getVeiculoQualificacao()) && p.getAno() >= anoMinimo){
-                    pontosAutor+= q.getQualis().getPontoQualis();
+                if(p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla()) && p.getAno() >= anoMinimo){
+                    if(p.getVeiculoPublicacao().getTipo() =='P'){
+                        pontosAutor += q.getQualis().getPontoQualis()*r.getMultiplicadorPeridicos();
+                
+                    }else{
+                        pontosAutor += q.getQualis().getPontoQualis();
+                    }
+                  
                 }
             }
              
         }
-        System.out.println("PontosAutor: "+ pontosAutor);
+ 
         return pontosAutor;
     }
     
