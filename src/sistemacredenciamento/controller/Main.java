@@ -54,8 +54,8 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        writeRecadastramento(listaDocentes, listaPublicacoes, listaQualificacoes, regras);
-        writeListaPublicacoes();
+        //writeRecadastramento(listaDocentes, listaPublicacoes, listaQualificacoes, regras);
+        writeListaPublicacoes(listaPublicacoes, listaQualificacoes, listaVeiculos, regras);
     }
 
     public static List<Docente> readDocentes(String fName) throws ParseException {
@@ -348,9 +348,7 @@ public class Main {
     }
 
     public static void writeRecadastramento(List<Docente> listaDocentes, List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes, RegrasPontuacao regras) {
-        System.out.println("--------------------");
-        System.out.println("Lista de publicacoes");
-        System.out.println("--------------------");
+
         System.out.println("Docente | Pontuacao | Recredenciameto?");
         // sort by name
         Collections.sort(listaDocentes);
@@ -386,8 +384,28 @@ public class Main {
         }
     }
 
-    private static void writeListaPublicacoes() {
-     // Write lista publicacoes aqui
-     // ano - sigla veiculo -  nome veiculo - qualis - fator de impacto - titulo publicacoes -nome docentes
+    private static void writeListaPublicacoes(List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes, List<Veiculo> listaVeiculos, RegrasPontuacao regras) {
+        // ordenacao 
+        //Collections.sort(listaQualificacoes);
+        //Collections.sort(listaPublicacoes);
+        
+        System.out.println("Ano | Sigla Veiculo | Veiculo | Qualis | Fator De Impacto| Titulo| Docentes");
+        for (Publicacao p : listaPublicacoes) {
+            for (Qualificacao q : listaQualificacoes) {
+                if (p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla())) {
+                    // publicacao
+                    System.out.print(p.getAno() + " " + p.getVeiculoPublicacao().getSigla() + " " + p.getVeiculoPublicacao().getNome() + " " + q.getQualis().getSiglaQualis() + " " + p.getVeiculoPublicacao().getFatorDeImpacto() + " " + p.getTitulo() + " ");
+                    // mostrar autores da publicacao
+                    for (int i = 0; i < p.getListaAutores().size(); i++) {
+                        System.out.print(p.getListaAutores().get(i).getNome());
+                        if (i < p.getListaAutores().size() - 1) {
+                            System.out.print(",");
+                        }
+                    }
+
+                    System.out.println();
+                }
+            }
+        }
     }
 }

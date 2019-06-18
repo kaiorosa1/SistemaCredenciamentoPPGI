@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Kaio Rosa
  */
-public class Publicacao {
+public class Publicacao implements Comparable<Publicacao>{
 
     private int ano;
     private Veiculo veiculoPublicacao;
@@ -66,6 +66,11 @@ public class Publicacao {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    @Override
+    public int compareTo(Publicacao p) {
+        return this.getTitulo().compareTo(p.getTitulo());
     }
 
 }
