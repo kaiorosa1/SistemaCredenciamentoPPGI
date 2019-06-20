@@ -31,18 +31,19 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Read Files and create the objects
+
         String docentesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\docentes.csv";
         String veiculosFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\veiculos.csv";
         String publicacoesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\publicacoes.csv";
         String qualificacoesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\qualis.csv";
         String regrasFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\regras.csv";
-
+        // criar listas
         List<Docente> listaDocentes = null;
         List<Veiculo> listaVeiculos = null;
         List<Publicacao> listaPublicacoes = null;
         List<Qualificacao> listaQualificacoes = null;
         RegrasPontuacao regras = null;
+        // ler arquivos e guardar nas respectivas listas de objetos
         try {
             listaDocentes = readDocentes(docentesFile);
             listaVeiculos = readVeiculos(veiculosFile);
@@ -53,10 +54,11 @@ public class Main {
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         }
+        // Escrever/ Mostrar funcionalidades - Recadastramento, Listar publicacoes, Gerar Estatisticas das publicacoes
 
         //writeRecadastramento(listaDocentes, listaPublicacoes, listaQualificacoes, regras);
         //writeListaPublicacoes(listaPublicacoes, listaQualificacoes);
-        writeEstatisticasPublicacoes(listaPublicacoes);
+        writeEstatisticasPublicacoes(listaPublicacoes, listaQualificacoes);
     }
 
     public static List<Docente> readDocentes(String fName) throws ParseException {
@@ -357,7 +359,7 @@ public class Main {
             System.out.print(d.getNome());
 
             double pontosAutor = d.getPontuacaoDocente(d.getListaPublicacoesDocente(listaPublicacoes), listaQualificacoes, regras);
-            System.out.print("  " + pontosAutor);
+            System.out.print("  " + String.format("%1f",pontosAutor));
 
             Calendar calendarInicio = Calendar.getInstance();
             Calendar calendarIngresso = Calendar.getInstance();
@@ -386,17 +388,25 @@ public class Main {
     }
 
     private static void writeListaPublicacoes(List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes) {
-        
+
         // ordenacao 
-        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p1.getTitulo().compareTo(p2.getTitulo());});
-        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p1.getVeiculoPublicacao().getSigla().compareTo(p2.getVeiculoPublicacao().getSigla());});
-        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p2.getAno() - p1.getAno();});
-        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p1.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis().compareTo(p2.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis());});
-        
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2) -> {
+            return p1.getTitulo().compareTo(p2.getTitulo());
+        });
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2) -> {
+            return p1.getVeiculoPublicacao().getSigla().compareTo(p2.getVeiculoPublicacao().getSigla());
+        });
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2) -> {
+            return p2.getAno() - p1.getAno();
+        });
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2) -> {
+            return p1.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis().compareTo(p2.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis());
+        });
+
         System.out.println("Ano | Sigla Veiculo | Veiculo | Qualis | Fator De Impacto| Titulo| Docentes");
         for (Publicacao p : listaPublicacoes) {
-         // publicacao
-            System.out.print(p.getAno() + " " + p.getVeiculoPublicacao().getSigla() + " " + p.getVeiculoPublicacao().getNome() + " "+ p.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis()  + " " + p.getVeiculoPublicacao().getFatorDeImpacto() + " " + p.getTitulo() + " ");
+            // publicacao
+            System.out.print(p.getAno() + " " + p.getVeiculoPublicacao().getSigla() + " " + p.getVeiculoPublicacao().getNome() + " " + p.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis() + " " + String.format("%.3f",p.getVeiculoPublicacao().getFatorDeImpacto()) + " " + p.getTitulo() + " ");
             // mostrar autores da publicacao
             for (int i = 0; i < p.getListaAutores().size(); i++) {
                 System.out.print(p.getListaAutores().get(i).getNome());
@@ -410,7 +420,23 @@ public class Main {
         }
     }
 
-    private static void writeEstatisticasPublicacoes(List<Publicacao> listaPublicacoes) {
+    private static void writeEstatisticasPublicacoes(List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes) {
         // write Estatisticas de publicacoes aqui
+        String[] quali = {"A1", "A2", "B1", "B2", "B3", "B4", "B5", "C"};
+        int nArtigos=0;
+        double nDoc=0;
+        System.out.println("Qualis | Numero de Artigos | Numero de Artigos por Docente");
+        for (String qualis : quali) {
+            for (Publicacao p : listaPublicacoes) {
+                if (p.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis().equals(qualis)) {
+                    nArtigos++;
+                    nDoc += (1.0/p.getListaAutores().size());
+                }
+            }
+            System.out.println(qualis + " "+ nArtigos + " "+ String.format("%.2f",nDoc));
+            nArtigos=0;
+            nDoc=0;
+        }
+
     }
 }
