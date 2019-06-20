@@ -58,7 +58,7 @@ public class Main {
 
         //writeRecadastramento(listaDocentes, listaPublicacoes, listaQualificacoes, regras);
         //writeListaPublicacoes(listaPublicacoes, listaQualificacoes);
-        writeEstatisticasPublicacoes(listaPublicacoes, listaQualificacoes);
+        writeEstatisticasPublicacoes(listaPublicacoes, listaQualificacoes, regras);
     }
 
     public static List<Docente> readDocentes(String fName) throws ParseException {
@@ -420,20 +420,19 @@ public class Main {
         }
     }
 
-    private static void writeEstatisticasPublicacoes(List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes) {
+    private static void writeEstatisticasPublicacoes(List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes, RegrasPontuacao regras) {
         // write Estatisticas de publicacoes aqui
-        String[] quali = {"A1", "A2", "B1", "B2", "B3", "B4", "B5", "C"};
         int nArtigos=0;
         double nDoc=0;
         System.out.println("Qualis | Numero de Artigos | Numero de Artigos por Docente");
-        for (String qualis : quali) {
+        for (Qualis qualis : regras.getListaQualis()) {
             for (Publicacao p : listaPublicacoes) {
-                if (p.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis().equals(qualis)) {
+                if (p.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis().equals(qualis.getSiglaQualis())) {
                     nArtigos++;
                     nDoc += (1.0/p.getListaAutores().size());
                 }
             }
-            System.out.println(qualis + " "+ nArtigos + " "+ String.format("%.2f",nDoc));
+            System.out.println(qualis.getSiglaQualis() + " "+ nArtigos + " "+ String.format("%.2f",nDoc));
             nArtigos=0;
             nDoc=0;
         }
