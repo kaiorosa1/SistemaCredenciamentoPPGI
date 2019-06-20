@@ -55,7 +55,7 @@ public class Main {
         }
 
         //writeRecadastramento(listaDocentes, listaPublicacoes, listaQualificacoes, regras);
-        writeListaPublicacoes(listaPublicacoes, listaQualificacoes, listaVeiculos, regras);
+        writeListaPublicacoes(listaPublicacoes, listaQualificacoes);
     }
 
     public static List<Docente> readDocentes(String fName) throws ParseException {
@@ -384,28 +384,28 @@ public class Main {
         }
     }
 
-    private static void writeListaPublicacoes(List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes, List<Veiculo> listaVeiculos, RegrasPontuacao regras) {
+    private static void writeListaPublicacoes(List<Publicacao> listaPublicacoes, List<Qualificacao> listaQualificacoes) {
+        
         // ordenacao 
-        //Collections.sort(listaQualificacoes);
-        //Collections.sort(listaPublicacoes);
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p1.getTitulo().compareTo(p2.getTitulo());});
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p1.getVeiculoPublicacao().getSigla().compareTo(p2.getVeiculoPublicacao().getSigla());});
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p2.getAno() - p1.getAno();});
+        listaPublicacoes.sort((Publicacao p1, Publicacao p2)->{ return p1.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis().compareTo(p2.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis());});
         
         System.out.println("Ano | Sigla Veiculo | Veiculo | Qualis | Fator De Impacto| Titulo| Docentes");
         for (Publicacao p : listaPublicacoes) {
-            for (Qualificacao q : listaQualificacoes) {
-                if (p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla())) {
-                    // publicacao
-                    System.out.print(p.getAno() + " " + p.getVeiculoPublicacao().getSigla() + " " + p.getVeiculoPublicacao().getNome() + " " + q.getQualis().getSiglaQualis() + " " + p.getVeiculoPublicacao().getFatorDeImpacto() + " " + p.getTitulo() + " ");
-                    // mostrar autores da publicacao
-                    for (int i = 0; i < p.getListaAutores().size(); i++) {
-                        System.out.print(p.getListaAutores().get(i).getNome());
-                        if (i < p.getListaAutores().size() - 1) {
-                            System.out.print(",");
-                        }
-                    }
-
-                    System.out.println();
+         // publicacao
+            System.out.print(p.getAno() + " " + p.getVeiculoPublicacao().getSigla() + " " + p.getVeiculoPublicacao().getNome() + " "+ p.getQualificacaoPublicacao(listaQualificacoes).getSiglaQualis()  + " " + p.getVeiculoPublicacao().getFatorDeImpacto() + " " + p.getTitulo() + " ");
+            // mostrar autores da publicacao
+            for (int i = 0; i < p.getListaAutores().size(); i++) {
+                System.out.print(p.getListaAutores().get(i).getNome());
+                if (i < p.getListaAutores().size() - 1) {
+                    System.out.print(",");
                 }
             }
+
+            System.out.println();
+
         }
     }
 }

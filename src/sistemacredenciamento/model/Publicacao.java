@@ -67,7 +67,14 @@ public class Publicacao implements Comparable<Publicacao>{
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
+    public Qualis getQualificacaoPublicacao(List<Qualificacao> listaQualificacoes){
+        for(Qualificacao q: listaQualificacoes){
+            if(this.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla())){
+                return q.getQualis();
+            }
+        }
+        return null;
+    }
     @Override
     public int compareTo(Publicacao p) {
         return this.getTitulo().compareTo(p.getTitulo());
