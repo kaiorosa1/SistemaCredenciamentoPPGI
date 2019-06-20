@@ -55,7 +55,8 @@ public class Main {
         }
 
         //writeRecadastramento(listaDocentes, listaPublicacoes, listaQualificacoes, regras);
-        writeListaPublicacoes(listaPublicacoes, listaQualificacoes);
+        //writeListaPublicacoes(listaPublicacoes, listaQualificacoes);
+        writeEstatisticasPublicacoes(listaPublicacoes);
     }
 
     public static List<Docente> readDocentes(String fName) throws ParseException {
@@ -407,5 +408,9 @@ public class Main {
             System.out.println();
 
         }
+    }
+
+    private static void writeEstatisticasPublicacoes(List<Publicacao> listaPublicacoes) {
+        // write Estatisticas de publicacoes aqui
     }
 }
