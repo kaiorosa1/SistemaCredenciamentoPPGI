@@ -17,7 +17,7 @@ public class DBConnection {
     public static Connection conectarMysql() throws SQLException, ClassNotFoundException{
         
         //criar a condição com o banco de dados
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cadastro","root","root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/recadastramento","root","root");
                 
        //faz com que classe seja carregada pela JVM
        Class.forName("com.mysql.jdbc.Driver");
