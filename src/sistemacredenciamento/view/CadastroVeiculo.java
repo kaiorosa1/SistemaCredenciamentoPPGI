@@ -5,6 +5,10 @@
  */
 package sistemacredenciamento.view;
 
+import javax.swing.JOptionPane;
+import sistemacredenciamento.dao.VeiculoDao;
+import sistemacredenciamento.model.Veiculo;
+
 /**
  *
  * @author user
@@ -193,7 +197,23 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnCadastrarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVeiculoActionPerformed
-        // TODO add your handling code here:
+        String sigla = txtSigla.getText();
+        String nome = txtNome.getText();
+        char tipo = ' ';
+        if(radioBtnP.isSelected()){
+            tipo = 'P';
+        }else if(radioBtnC.isSelected()){
+            tipo = 'C';
+        }
+        double fatorImpacto = Double.parseDouble(txtFatorDeImpacto.getText());
+        String issn = txtISSN.getText();
+        
+        Veiculo veiculo = new Veiculo(sigla,nome,tipo,fatorImpacto,issn);
+        
+        VeiculoDao dao = new VeiculoDao();
+        dao.salvarDocente(veiculo);
+        JOptionPane.showMessageDialog(null, "Veiculo Cadastrado");
+        
     }//GEN-LAST:event_btnCadastrarVeiculoActionPerformed
 
     /**
