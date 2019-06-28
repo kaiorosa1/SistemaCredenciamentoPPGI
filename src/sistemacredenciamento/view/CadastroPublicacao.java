@@ -5,6 +5,9 @@
  */
 package sistemacredenciamento.view;
 
+import java.util.List;
+import sistemacredenciamento.model.*;
+
 /**
  *
  * @author user
@@ -71,11 +74,16 @@ public class CadastroPublicacao extends javax.swing.JFrame {
 
         jLabel8.setText("Volume:");
 
-        jLabel9.setText("Pagina Incicial:");
+        jLabel9.setText("Pagina Inicial:");
 
         jLabel10.setText("Pagina Final:");
 
         cmbVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbVeiculoActionPerformed(evt);
+            }
+        });
 
         cmbAutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -99,6 +107,11 @@ public class CadastroPublicacao extends javax.swing.JFrame {
         });
 
         btnCadastrarPublicacao.setText("Cadastrar");
+        btnCadastrarPublicacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarPublicacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,7 +157,7 @@ public class CadastroPublicacao extends javax.swing.JFrame {
                                         .addComponent(cmbAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,6 +241,36 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
+
+    private void cmbVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVeiculoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cmbVeiculoActionPerformed
+
+    private void btnCadastrarPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPublicacaoActionPerformed
+        // TODO add your handling code here:
+        int ano= Integer.parseInt(txtAno.getText());
+        Veiculo veiculo = (Veiculo) cmbVeiculo.getSelectedItem(); // get the selected Veiculo
+        String titulo = txtTitulo.getText();
+        List<Docente> listaDocentes = null; // select the Docentes and add the in the list
+        int numero = Integer.parseInt(txtNumero.getText());
+        int volume = 0;
+        int pagInicial =0;
+        int pagFinal =0;
+        String localConferencia = "";
+        Publicacao publicacao = null; // publicacao 
+        if(veiculo.getTipo() == 'P'){
+            pagInicial = Integer.parseInt(txtPagInicial.getText());
+            pagFinal = Integer.parseInt(txtPagFinal.getText());
+            volume = Integer.parseInt(txtVolume.getText());
+            publicacao = new Periodico(volume,pagInicial,pagFinal,ano,veiculo,titulo,listaDocentes,numero);
+        }else{
+            localConferencia = txtLocalConferencia.getText();
+            publicacao = new Conferencia(localConferencia,ano,veiculo,titulo,listaDocentes,numero);
+        }
+        
+        // salvar no banco
+    }//GEN-LAST:event_btnCadastrarPublicacaoActionPerformed
 
     /**
      * @param args the command line arguments
