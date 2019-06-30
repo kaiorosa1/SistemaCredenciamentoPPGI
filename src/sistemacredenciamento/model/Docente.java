@@ -30,6 +30,10 @@ public class Docente implements Comparable<Docente> {
         this.isCordenador = isCordenador;
     }
 
+    public Docente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Date getDataNacimeto() {
         return dataNacimeto;
     }

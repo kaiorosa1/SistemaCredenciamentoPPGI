@@ -54,6 +54,11 @@ public class CadastroQualificacao extends javax.swing.JFrame {
         cmbQualis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCadastrarQualificacao.setText("Cadastrar");
+        btnCadastrarQualificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarQualificacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,6 +123,13 @@ public class CadastroQualificacao extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastrarQualificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarQualificacaoActionPerformed
+      
+        int ano = Integer.parseInt(txtAno.getText());
+        // listaVeiculo 
+        // listaQualis
+    }//GEN-LAST:event_btnCadastrarQualificacaoActionPerformed
 
     /**
      * @param args the command line arguments
