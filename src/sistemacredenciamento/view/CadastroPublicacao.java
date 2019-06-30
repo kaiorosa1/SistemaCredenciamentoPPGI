@@ -248,7 +248,7 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbVeiculoActionPerformed
 
     private void btnCadastrarPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPublicacaoActionPerformed
-        // TODO add your handling code here:
+        // NOT FINISHED (Pay attention to listaDocentes / publicacao)
         int ano= Integer.parseInt(txtAno.getText());
         Veiculo veiculo = (Veiculo) cmbVeiculo.getSelectedItem(); // get the selected Veiculo
         String titulo = txtTitulo.getText();

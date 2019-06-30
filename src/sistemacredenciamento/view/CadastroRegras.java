@@ -5,6 +5,16 @@
  */
 package sistemacredenciamento.view;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import sistemacredenciamento.model.Qualis;
+import sistemacredenciamento.model.RegrasPontuacao;
+
 /**
  *
  * @author user
@@ -40,7 +50,7 @@ public class CadastroRegras extends javax.swing.JFrame {
         txtDataFim = new javax.swing.JFormattedTextField();
         txtQuantidadeAnos = new javax.swing.JTextField();
         txtPontosMinimos = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCadastrarRegras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,10 +74,10 @@ public class CadastroRegras extends javax.swing.JFrame {
 
         txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrarRegras.setText("Cadastrar");
+        btnCadastrarRegras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCadastrarRegrasActionPerformed(evt);
             }
         });
 
@@ -108,7 +118,7 @@ public class CadastroRegras extends javax.swing.JFrame {
                                 .addComponent(txtMultiplicador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(210, 210, 210)
-                        .addComponent(jButton1)))
+                        .addComponent(btnCadastrarRegras)))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,7 +149,7 @@ public class CadastroRegras extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtPontosMinimos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnCadastrarRegras)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -157,9 +167,29 @@ public class CadastroRegras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCadastrarRegrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarRegrasActionPerformed
+        Date dataInicio =null;
+        Date dataFim = null;
+        try {
+            dataInicio =  new java.sql.Date(new SimpleDateFormat("dd/MM/yyyy").parse(txtDataInicio.getText()).getTime());
+            dataFim = new java.sql.Date(new SimpleDateFormat("dd/MM/yyyy").parse(txtDataFim.getText()).getTime());
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Data formatada errada!!");
+            Logger.getLogger(CadastroDocente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Lista Qualis -- como vou pegar os pontos e qualis ?? como vou lista-los
+        List<Qualis> listaQualis = null;
+        
+        Double multiplicador = Double.parseDouble(txtMultiplicador.getText());
+        int qtdAnos= Integer.parseInt(txtQuantidadeAnos.getText());
+        int pontos = Integer.parseInt(txtPontosMinimos.getText());
+        
+        RegrasPontuacao regras = new RegrasPontuacao(dataInicio,dataFim,listaQualis,multiplicador,qtdAnos,pontos);
+        
+        // salvar no banco
+        
+        
+    }//GEN-LAST:event_btnCadastrarRegrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +227,7 @@ public class CadastroRegras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCadastrarRegras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
