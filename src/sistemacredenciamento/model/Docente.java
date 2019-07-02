@@ -18,28 +18,30 @@ public class Docente implements Comparable<Docente> {
 
     private long codigo;
     private String nome;
-    private Date dataNacimeto;
+    private Date dataNascimeto;
     private Date dataIngresso;
-    private boolean isCordenador;
+    private boolean isCoordenador;
 
+    public Docente() {
+        
+    }
+    
     public Docente(long codigo, String nome, Date dataNacimeto, Date dataIngresso, boolean isCordenador) {
         this.codigo = codigo;
         this.nome = nome;
-        this.dataNacimeto = dataNacimeto;
+        this.dataNascimeto = dataNacimeto;
         this.dataIngresso = dataIngresso;
-        this.isCordenador = isCordenador;
+        this.isCoordenador = isCordenador;
     }
 
-    public Docente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+
+    public Date getDataNascimeto() {
+        return dataNascimeto;
     }
 
-    public Date getDataNacimeto() {
-        return dataNacimeto;
-    }
-
-    public void setDataNacimeto(Date dataNacimeto) {
-        this.dataNacimeto = dataNacimeto;
+    public void setDataNascimeto(Date dataNascimeto) {
+        this.dataNascimeto = dataNascimeto;
     }
 
     public long getCodigo() {
@@ -66,12 +68,12 @@ public class Docente implements Comparable<Docente> {
         this.dataIngresso = dataIngresso;
     }
 
-    public boolean isIsCordenador() {
-        return isCordenador;
+    public boolean isIsCoordenador() {
+        return isCoordenador;
     }
 
-    public void setIsCordenador(boolean isCordenador) {
-        this.isCordenador = isCordenador;
+    public void setIsCoordenador(boolean isCoordenador) {
+        this.isCoordenador = isCoordenador;
     }
 
     public List<Publicacao> getListaPublicacoesDocente(List<Publicacao> lp) {

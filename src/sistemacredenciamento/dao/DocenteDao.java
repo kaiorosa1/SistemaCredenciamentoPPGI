@@ -32,9 +32,9 @@ public class DocenteDao {
             pstm = conn.prepareStatement(sql);
             pstm.setLong(1, docente.getCodigo());
             pstm.setString(2, docente.getNome());
-            pstm.setDate(3, (Date) docente.getDataNacimeto());
+            pstm.setDate(3, (Date) docente.getDataNascimeto());
             pstm.setDate(4, (Date) docente.getDataIngresso());
-            pstm.setBoolean(5, docente.isIsCordenador());
+            pstm.setBoolean(5, docente.isIsCoordenador());
             pstm.execute();
 
         } catch (Exception e) {
@@ -71,10 +71,11 @@ public class DocenteDao {
 
             while (rset.next()) {
 
-//                docente.setId(rset.getInt("id"));
-//                docente.setNome(rset.getString("nome"));
-//                docente.setDescricao(rset.getString("descricao"));
-//                
+                docente.setCodigo(rset.getInt("codigo"));
+                docente.setNome(rset.getString("nome"));
+                docente.setDataNascimeto( (Date) rset.getDate("dataNascimeto"));
+                docente.setDataIngresso((Date) rset.getDate("dataIngresso"));
+                docente.setIsCoordenador(rset.getBoolean("isCordenador"));
                 //Adiciono o produto recuperado em uma lista
                 listaDocentes.add(docente);
 

@@ -366,12 +366,12 @@ public class Main {
             Calendar calendarNascimento = Calendar.getInstance();
             calendarInicio.setTime(regras.getDataInicio());
             calendarIngresso.setTime(d.getDataIngresso());
-            calendarNascimento.setTime(d.getDataNacimeto());
+            calendarNascimento.setTime(d.getDataNascimeto());
 
             int tempoDeCasa = calendarInicio.get(Calendar.YEAR) - calendarIngresso.get(Calendar.YEAR);
             int idade = calendarInicio.get(Calendar.YEAR) - calendarNascimento.get(Calendar.YEAR);
             System.out.print("  ");
-            if (d.isIsCordenador()) {
+            if (d.isIsCoordenador()) {
                 System.out.print("Coordenador");
 
             } else if (tempoDeCasa < 3) {
