@@ -23,7 +23,7 @@ public class DocenteDao {
 
     public void salvarDocente(Docente docente) {
         //conectar com o banco de dados aqui
-        String sql = "INSERT INTO docente(codigo, nome, dataNascimento, dataIngresso, isCordenador) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO docente(codigo, nome, dataNascimento, dataIngresso, isCoordenador) VALUES(?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement pstm = null;
 
@@ -75,7 +75,7 @@ public class DocenteDao {
                 docente.setNome(rset.getString("nome"));
                 docente.setDataNascimeto( (Date) rset.getDate("dataNascimeto"));
                 docente.setDataIngresso((Date) rset.getDate("dataIngresso"));
-                docente.setIsCoordenador(rset.getBoolean("isCordenador"));
+                docente.setIsCoordenador(rset.getBoolean("isCoordenador"));
                 //Adiciono o produto recuperado em uma lista
                 listaDocentes.add(docente);
 
