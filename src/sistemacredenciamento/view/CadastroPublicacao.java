@@ -19,6 +19,7 @@ public class CadastroPublicacao extends javax.swing.JFrame {
      */
     public CadastroPublicacao() {
         initComponents();
+        initCmbComponents();
     }
 
     /**
@@ -243,8 +244,8 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroActionPerformed
 
     private void cmbVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVeiculoActionPerformed
-        // TODO add your handling code here:
-        
+       // TODO add your handling code here:
+
     }//GEN-LAST:event_cmbVeiculoActionPerformed
 
     private void btnCadastrarPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPublicacaoActionPerformed
@@ -333,4 +334,9 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtVolume;
     // End of variables declaration//GEN-END:variables
+
+    private void initCmbComponents() {
+        Veiculo veiculo = new Veiculo();
+        Docente docente = new Docente();
+    }
 }
