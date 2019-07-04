@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import sistemacredenciamento.connection.DBConnection;
-import sistemacredenciamento.model.Docente;
 import sistemacredenciamento.model.Veiculo;
 
 /**
@@ -59,7 +58,7 @@ public class VeiculoDao {
         //Classe que vai recuperar os dados do banco de dados
         ResultSet rset = null;
 
-        Docente docente = new Docente();
+        Veiculo veiculo = new Veiculo();
 
         try {
             conn = DBConnection.conectarMysql();
@@ -68,8 +67,13 @@ public class VeiculoDao {
             rset = pstm.executeQuery();
 
             while (rset.next()) {
-
-               
+                veiculo.setSigla(rset.getString("sigla"));
+                veiculo.setNome(rset.getString("nome"));
+                veiculo.setTipo(rset.getString("tipo").charAt(0));
+                veiculo.setFatorDeImpacto(rset.getDouble("fatorImpacto"));
+                veiculo.setISSN(rset.getString("issn"));
+                // add in the lista veiculos
+                listaVeiculos.add(veiculo);
             }
 
         } catch (Exception e) {

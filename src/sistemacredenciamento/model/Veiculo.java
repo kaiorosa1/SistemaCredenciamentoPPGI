@@ -24,6 +24,10 @@ public class Veiculo {
         this.fatorDeImpacto = fatorDeImpacto;
         this.ISSN = ISSN;
     }
+
+    public Veiculo() {
+        
+    }
     
     
     public String getSigla() {
