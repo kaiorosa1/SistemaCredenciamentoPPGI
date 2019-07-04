@@ -241,32 +241,32 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroActionPerformed
 
     private void cmbVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVeiculoActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
 
     }//GEN-LAST:event_cmbVeiculoActionPerformed
 
     private void btnCadastrarPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPublicacaoActionPerformed
         // NOT FINISHED (Pay attention to listaDocentes / publicacao)
-        int ano= Integer.parseInt(txtAno.getText());
+        int ano = Integer.parseInt(txtAno.getText());
         Veiculo veiculo = (Veiculo) cmbVeiculo.getSelectedItem(); // get the selected Veiculo
         String titulo = txtTitulo.getText();
         List<Docente> listaDocentes = null; // select the Docentes and add the in the list
         int numero = Integer.parseInt(txtNumero.getText());
         int volume = 0;
-        int pagInicial =0;
-        int pagFinal =0;
+        int pagInicial = 0;
+        int pagFinal = 0;
         String localConferencia = "";
         Publicacao publicacao = null; // publicacao 
-        if(veiculo.getTipo() == 'P'){
+        if (veiculo.getTipo() == 'P') {
             pagInicial = Integer.parseInt(txtPagInicial.getText());
             pagFinal = Integer.parseInt(txtPagFinal.getText());
             volume = Integer.parseInt(txtVolume.getText());
-            publicacao = new Periodico(volume,pagInicial,pagFinal,ano,veiculo,titulo,listaDocentes,numero);
-        }else{
+            publicacao = new Periodico(volume, pagInicial, pagFinal, ano, veiculo, titulo, listaDocentes, numero);
+        } else {
             localConferencia = txtLocalConferencia.getText();
-            publicacao = new Conferencia(localConferencia,ano,veiculo,titulo,listaDocentes,numero);
+            publicacao = new Conferencia(localConferencia, ano, veiculo, titulo, listaDocentes, numero);
         }
-        
+
         // salvar no banco
     }//GEN-LAST:event_btnCadastrarPublicacaoActionPerformed
 
@@ -335,15 +335,18 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     private void initCmbComponents() {
         VeiculoDao veiculoDao = new VeiculoDao();
         DocenteDao docenteDao = new DocenteDao();
-        
+
         List<Veiculo> lv = veiculoDao.listarVeiculo();
         List<Docente> ld = docenteDao.listarDocente();
-        
+
         // JComboBox Veiculo
-        for(Veiculo v : lv){
-            
+        for (Veiculo v : lv) {
             cmbVeiculo.addItem(v.getNome());
         }
-        
+
+        for (Docente d : ld) {
+            cmbAutores.addItem(d.getNome());
+        }
+
     }
 }
