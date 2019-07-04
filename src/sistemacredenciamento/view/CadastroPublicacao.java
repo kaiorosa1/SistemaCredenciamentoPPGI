@@ -6,6 +6,7 @@
 package sistemacredenciamento.view;
 
 import java.util.List;
+import sistemacredenciamento.dao.*;
 import sistemacredenciamento.model.*;
 
 /**
@@ -79,20 +80,15 @@ public class CadastroPublicacao extends javax.swing.JFrame {
 
         jLabel10.setText("Pagina Final:");
 
-        cmbVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um veiculo" }));
         cmbVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbVeiculoActionPerformed(evt);
             }
         });
 
-        cmbAutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbAutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione um autor" }));
 
-        lstAutores.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lstAutores);
 
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -151,14 +147,14 @@ public class CadastroPublicacao extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cmbVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cmbAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,7 +332,17 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void initCmbComponents() {
-        Veiculo veiculo = new Veiculo();
-        Docente docente = new Docente();
+        VeiculoDao veiculoDao = new VeiculoDao();
+        DocenteDao docenteDao = new DocenteDao();
+        
+        List<Veiculo> lv = veiculoDao.listarVeiculo();
+        List<Docente> ld = docenteDao.listarDocente();
+        
+        
+        // JComboBox Veiculo
+        for(Veiculo v : lv){
+            cmbVeiculo.addItem(v.getNome());
+        }
+        
     }
 }
