@@ -73,7 +73,7 @@ public class DocenteDao {
 
                 docente.setCodigo(rset.getInt("codigo"));
                 docente.setNome(rset.getString("nome"));
-                docente.setDataNascimeto( (Date) rset.getDate("dataNascimeto"));
+                docente.setDataNascimeto( (Date) rset.getDate("dataNascimento"));
                 docente.setDataIngresso((Date) rset.getDate("dataIngresso"));
                 docente.setIsCoordenador(rset.getBoolean("isCoordenador"));
                 //Adiciono o produto recuperado em uma lista
