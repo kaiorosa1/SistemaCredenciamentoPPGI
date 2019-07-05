@@ -51,9 +51,9 @@ public class DocenteDao {
 
     }
 
-    public List<Docente> listarDocente() {
+    public ArrayList<Docente> listarDocente() {
         //INCOMPLETE
-        List<Docente> listaDocentes = new ArrayList<>();
+        ArrayList<Docente> listaDocentes = new ArrayList<>();
         String sql = "SELECT * FROM docente";
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -61,7 +61,7 @@ public class DocenteDao {
         //Classe que vai recuperar os dados do banco de dados
         ResultSet rset = null;
 
-        Docente docente = new Docente();
+        
 
         try {
             conn = DBConnection.conectarMysql();
@@ -70,16 +70,18 @@ public class DocenteDao {
             rset = pstm.executeQuery();
 
             while (rset.next()) {
-
+                Docente docente = new Docente();
                 docente.setCodigo(rset.getInt("codigo"));
                 docente.setNome(rset.getString("nome"));
                 docente.setDataNascimeto( (Date) rset.getDate("dataNascimento"));
                 docente.setDataIngresso((Date) rset.getDate("dataIngresso"));
                 docente.setIsCoordenador(rset.getBoolean("isCoordenador"));
                 //Adiciono o produto recuperado em uma lista
+               
                 listaDocentes.add(docente);
 
             }
+            
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,6 +100,7 @@ public class DocenteDao {
                 e.printStackTrace();
             }
         }
+        
         return listaDocentes;
 
     }

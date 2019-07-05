@@ -5,6 +5,7 @@
  */
 package sistemacredenciamento.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import sistemacredenciamento.dao.*;
 import sistemacredenciamento.model.*;
@@ -337,16 +338,17 @@ public class CadastroPublicacao extends javax.swing.JFrame {
         DocenteDao docenteDao = new DocenteDao();
 
         List<Veiculo> lv = veiculoDao.listarVeiculo();
-        List<Docente> ld = docenteDao.listarDocente();
+        ArrayList<Docente> ld = docenteDao.listarDocente();
 
         // JComboBox Veiculo
-        for (Veiculo v : lv) {
+        for (Veiculo v : lv) {  
             cmbVeiculo.addItem(v.getNome());
         }
-
-        for (Docente d : ld) {
+        for (Docente d: ld) {
             cmbAutores.addItem(d.getNome());
         }
+
+       
 
     }
 }

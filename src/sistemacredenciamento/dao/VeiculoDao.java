@@ -58,7 +58,7 @@ public class VeiculoDao {
         //Classe que vai recuperar os dados do banco de dados
         ResultSet rset = null;
 
-        Veiculo veiculo = new Veiculo();
+        
 
         try {
             conn = DBConnection.conectarMysql();
@@ -67,6 +67,7 @@ public class VeiculoDao {
             rset = pstm.executeQuery();
 
             while (rset.next()) {
+                Veiculo veiculo = new Veiculo();
                 veiculo.setSigla(rset.getString("sigla"));
                 veiculo.setNome(rset.getString("nome"));
                 veiculo.setTipo(rset.getString("tipo").charAt(0));
