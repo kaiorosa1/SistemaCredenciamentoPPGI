@@ -3,7 +3,7 @@
 
 ## What is it?
 
-SistemaCredenciamentoPPGI is a project written in Java where the user can register professors to the Federal University of Espirito Santo PPGI program. 
+SistemaCredenciamentoPPGI is a project written in Java where the user can register professors in the Federal University of Espirito Santo PPGI program. 
 
 
 ---
