@@ -7,6 +7,7 @@ package sistemacredenciamento.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import sistemacredenciamento.dao.*;
 import sistemacredenciamento.model.*;
 
@@ -22,8 +23,9 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     public CadastroPublicacao() {
         initComponents();
         initCmbComponents();
+        
     }
-
+    DefaultListModel dlm = new DefaultListModel();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,6 +91,11 @@ public class CadastroPublicacao extends javax.swing.JFrame {
         });
 
         cmbAutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione um autor" }));
+        cmbAutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAutoresActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(lstAutores);
 
@@ -270,6 +277,15 @@ public class CadastroPublicacao extends javax.swing.JFrame {
 
         // salvar no banco
     }//GEN-LAST:event_btnCadastrarPublicacaoActionPerformed
+
+    private void cmbAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAutoresActionPerformed
+        
+        // get selected item and display in a list
+        dlm.addElement(cmbAutores.getSelectedItem().toString());
+        lstAutores.setModel(dlm);
+                
+                
+    }//GEN-LAST:event_cmbAutoresActionPerformed
 
     /**
      * @param args the command line arguments
