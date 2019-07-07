@@ -26,6 +26,8 @@ public class CadastroPublicacao extends javax.swing.JFrame {
         
     }
     DefaultListModel dlm = new DefaultListModel();
+    List<Veiculo> lv =null;
+    List<Docente> ld = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -256,7 +258,19 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     private void btnCadastrarPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPublicacaoActionPerformed
         // NOT FINISHED (Pay attention to listaDocentes / publicacao)
         int ano = Integer.parseInt(txtAno.getText());
-        Veiculo veiculo = (Veiculo) cmbVeiculo.getSelectedItem(); // get the selected Veiculo
+        // get Veiculo from string 
+        String veiculoSelecionado = cmbVeiculo.getSelectedItem().toString(); // get the selected Veiculo
+        // get the sigla from the given string
+        String veiculoSelec = veiculoSelecionado.split("-")[0].trim();
+        Veiculo veiculo = null;
+        // search for the veiculo and add it to the veiculo associated
+        for(Veiculo v : lv){
+            if(v.getSigla().equals(veiculoSelec.trim())){
+                veiculo = v;
+            }
+        }
+        
+        
         String titulo = txtTitulo.getText();
         List<Docente> listaDocentes = null; // select the Docentes and add the in the list
         int numero = Integer.parseInt(txtNumero.getText());
@@ -353,15 +367,17 @@ public class CadastroPublicacao extends javax.swing.JFrame {
         VeiculoDao veiculoDao = new VeiculoDao();
         DocenteDao docenteDao = new DocenteDao();
 
-        List<Veiculo> lv = veiculoDao.listarVeiculo();
-        ArrayList<Docente> ld = docenteDao.listarDocente();
+        lv = veiculoDao.listarVeiculo();
+        ld = docenteDao.listarDocente();
 
         // JComboBox Veiculo
         for (Veiculo v : lv) {  
-            cmbVeiculo.addItem(v.getNome());
+            cmbVeiculo.addItem(v.getSigla() +" - " +v.getNome());
+            // how to save the veiculo 
         }
         for (Docente d: ld) {
-            cmbAutores.addItem(d.getNome());
+            cmbAutores.addItem(d.getCodigo()+" - "+d.getNome());
+            // how to save the docente
         }
 
        

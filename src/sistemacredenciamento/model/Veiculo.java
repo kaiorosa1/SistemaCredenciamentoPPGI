@@ -69,6 +69,11 @@ public class Veiculo {
     public void setISSN(String ISSN) {
         this.ISSN = ISSN;
     }
+
+    @Override
+    public String toString() {
+        return "Veiculo{" + "nome=" + nome + '}';
+    }
     
     
     
