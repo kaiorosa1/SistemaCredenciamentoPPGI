@@ -256,7 +256,7 @@ public class CadastroPublicacao extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbVeiculoActionPerformed
 
     private void btnCadastrarPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPublicacaoActionPerformed
-        // NOT FINISHED (Pay attention to listaDocentes / publicacao)
+
         int ano = Integer.parseInt(txtAno.getText());
         // get Veiculo from string 
         String veiculoSelecionado = cmbVeiculo.getSelectedItem().toString(); // get the selected Veiculo
@@ -269,9 +269,9 @@ public class CadastroPublicacao extends javax.swing.JFrame {
                 veiculo = v;
             }
         }
-        
-        
+         
         String titulo = txtTitulo.getText();
+        // use the same technique here to find the list of  Docentes
         List<Docente> listaDocentes = null; // select the Docentes and add the in the list
         int numero = Integer.parseInt(txtNumero.getText());
         int volume = 0;
