@@ -257,13 +257,13 @@ public class CadastroPublicacao extends javax.swing.JFrame {
 
     private void btnCadastrarPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPublicacaoActionPerformed
 
+        // guardar publicacao
         int ano = Integer.parseInt(txtAno.getText());
-        // get Veiculo from string 
-        String veiculoSelecionado = cmbVeiculo.getSelectedItem().toString(); // get the selected Veiculo
-        // get the sigla from the given string
+        // retiramos da string do veiculo selecionado sua sigla  e procuramos na lista de veiculos
+        // e associamos o veiculo correspondente a publicacao 
+        String veiculoSelecionado = cmbVeiculo.getSelectedItem().toString();
         String veiculoSelec = veiculoSelecionado.split("-")[0].trim();
         Veiculo veiculo = null;
-        // search for the veiculo and add it to the veiculo associated
         for(Veiculo v : lv){
             if(v.getSigla().equals(veiculoSelec.trim())){
                 veiculo = v;
@@ -271,9 +271,9 @@ public class CadastroPublicacao extends javax.swing.JFrame {
         }
          
         String titulo = txtTitulo.getText();
-        // use the same technique here to find the list of  Docentes
-        List<Docente> listaDocentes = new ArrayList<>(); // select the Docentes and add the in the list
-        
+        // na caixa ao lado nos mostra os autores selcionados 
+        // usamos a mesma tecnica usada para veiculos (retirar o identificador e buscar na lista)
+        List<Docente> listaDocentes = new ArrayList<>(); 
         for(int i =0; i< lstAutores.getModel().getSize(); i++){
             long cod  = Integer.parseInt(lstAutores.getModel().getElementAt(i).split("-")[0].trim());
             for(Docente d : ld){
@@ -303,7 +303,7 @@ public class CadastroPublicacao extends javax.swing.JFrame {
 
     private void cmbAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAutoresActionPerformed
         
-        // get selected item and display in a list
+        // pegar item selecionado e mostrar na lista
         dlm.addElement(cmbAutores.getSelectedItem().toString());
         lstAutores.setModel(dlm);
                 
@@ -382,11 +382,9 @@ public class CadastroPublicacao extends javax.swing.JFrame {
         // JComboBox Veiculo
         for (Veiculo v : lv) {  
             cmbVeiculo.addItem(v.getSigla() +" - " +v.getNome());
-            // how to save the veiculo 
         }
         for (Docente d: ld) {
             cmbAutores.addItem(d.getCodigo()+" - "+d.getNome());
-            // how to save the docente
         }
 
        
