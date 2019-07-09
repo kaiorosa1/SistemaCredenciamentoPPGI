@@ -272,7 +272,16 @@ public class CadastroPublicacao extends javax.swing.JFrame {
          
         String titulo = txtTitulo.getText();
         // use the same technique here to find the list of  Docentes
-        List<Docente> listaDocentes = null; // select the Docentes and add the in the list
+        List<Docente> listaDocentes = new ArrayList<>(); // select the Docentes and add the in the list
+        
+        for(int i =0; i< lstAutores.getModel().getSize(); i++){
+            long cod  = Integer.parseInt(lstAutores.getModel().getElementAt(i).split("-")[0].trim());
+            for(Docente d : ld){
+                if(d.getCodigo() == cod){
+                    listaDocentes.add(d);
+                }
+            }
+        }
         int numero = Integer.parseInt(txtNumero.getText());
         int volume = 0;
         int pagInicial = 0;
