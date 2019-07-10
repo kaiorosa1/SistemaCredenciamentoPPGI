@@ -5,6 +5,10 @@
  */
 package sistemacredenciamento.view;
 
+import java.util.List;
+import sistemacredenciamento.dao.VeiculoDao;
+import sistemacredenciamento.model.Veiculo;
+
 /**
  *
  * @author user
@@ -16,8 +20,9 @@ public class CadastroQualificacao extends javax.swing.JFrame {
      */
     public CadastroQualificacao() {
         initComponents();
+        initCmbComponents();
     }
-
+    List<Veiculo> lv = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,9 +130,10 @@ public class CadastroQualificacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarQualificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarQualificacaoActionPerformed
-      
+        
         int ano = Integer.parseInt(txtAno.getText());
         // listaVeiculo 
+        
         // listaQualis
     }//GEN-LAST:event_btnCadastrarQualificacaoActionPerformed
 
@@ -177,4 +183,12 @@ public class CadastroQualificacao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtAno;
     // End of variables declaration//GEN-END:variables
+
+    private void initCmbComponents() {
+        VeiculoDao veiculoDao = new VeiculoDao();
+        lv = veiculoDao.listarVeiculo();
+         for (Veiculo v : lv) {  
+            cmbVeiculo.addItem(v.getSigla() +" - " +v.getNome());
+        }
+    }
 }
