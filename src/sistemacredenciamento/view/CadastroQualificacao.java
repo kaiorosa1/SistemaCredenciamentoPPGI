@@ -5,6 +5,7 @@
  */
 package sistemacredenciamento.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import sistemacredenciamento.dao.VeiculoDao;
 import sistemacredenciamento.model.Veiculo;
@@ -130,11 +131,19 @@ public class CadastroQualificacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarQualificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarQualificacaoActionPerformed
-        
+        List<Veiculo> listaVeiculos = new ArrayList<>();
         int ano = Integer.parseInt(txtAno.getText());
         // listaVeiculo 
-        
+        for(Veiculo v: lv){
+            if(v.getSigla().equals(cmbVeiculo.getSelectedItem().toString())){
+                listaVeiculos.add(v);
+            }
+        }
         // listaQualis
+        
+        // salvar em Qualificacao()
+        
+        // salvar em banco 
     }//GEN-LAST:event_btnCadastrarQualificacaoActionPerformed
 
     /**
@@ -190,5 +199,9 @@ public class CadastroQualificacao extends javax.swing.JFrame {
          for (Veiculo v : lv) {  
             cmbVeiculo.addItem(v.getSigla() +" - " +v.getNome());
         }
+         
+         
+       // init Qualis
+       
     }
 }
