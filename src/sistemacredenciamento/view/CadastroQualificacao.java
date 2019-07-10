@@ -131,12 +131,12 @@ public class CadastroQualificacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarQualificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarQualificacaoActionPerformed
-        List<Veiculo> listaVeiculos = new ArrayList<>();
+        Veiculo veiculo = null;
         int ano = Integer.parseInt(txtAno.getText());
-        // listaVeiculo 
+        // veiculo 
         for(Veiculo v: lv){
             if(v.getSigla().equals(cmbVeiculo.getSelectedItem().toString())){
-                listaVeiculos.add(v);
+                veiculo = v;
             }
         }
         // listaQualis
