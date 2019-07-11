@@ -202,6 +202,11 @@ public class CadastroQualificacao extends javax.swing.JFrame {
          
          
        // init Qualis
+       String[] qualisLista = {"A1", "A2", "B1", "B2", "B3", "B4", "B5", "C"};
+       for(String qualis : qualisLista){
+           cmbQualis.addItem(qualis);
+       }
+              
        
     }
 }
