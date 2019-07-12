@@ -11,7 +11,7 @@ import sistemacredenciamento.model.*;
 
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class CadastroQualificacao extends javax.swing.JFrame {
 

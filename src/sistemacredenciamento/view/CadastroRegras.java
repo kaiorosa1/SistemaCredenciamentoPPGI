@@ -17,7 +17,7 @@ import sistemacredenciamento.model.RegrasPontuacao;
 
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class CadastroRegras extends javax.swing.JFrame {
 

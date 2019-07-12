@@ -16,7 +16,7 @@ import sistemacredenciamento.model.Veiculo;
 
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class VeiculoDao {
      public void salvarDocente(Veiculo veiculo) {

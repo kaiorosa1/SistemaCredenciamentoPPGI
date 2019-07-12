@@ -10,7 +10,7 @@ import sistemacredenciamento.model.*;
 
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class RegrasPontuacaoDao {
     public List<RegrasPontuacao> listarRegras(){

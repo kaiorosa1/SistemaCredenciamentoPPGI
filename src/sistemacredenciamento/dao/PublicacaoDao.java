@@ -5,10 +5,15 @@
  */
 package sistemacredenciamento.dao;
 
+import java.util.List;
+import sistemacredenciamento.model.*;
+
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class PublicacaoDao {
-    
+    public List<Publicacao> listarPublicacao(){
+        return null;
+    }
 }

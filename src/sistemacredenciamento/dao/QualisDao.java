@@ -10,7 +10,7 @@ import sistemacredenciamento.model.Qualis;
 
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class QualisDao {
     public List<Qualis> listarQualis(){

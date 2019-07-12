@@ -5,10 +5,15 @@
  */
 package sistemacredenciamento.dao;
 
+import java.util.List;
+import sistemacredenciamento.model.Qualificacao;
+
 /**
  *
- * @author user
+ * @author Kaio Rosa
  */
 public class QualificacaoDao {
-    
+    public List<Qualificacao> listarQualificacao(){
+        return null;
+    }
 }
