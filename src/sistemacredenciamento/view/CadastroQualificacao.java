@@ -221,6 +221,6 @@ public class CadastroQualificacao extends javax.swing.JFrame {
            cmbQualis.addItem(qualis);
        }
               
-       
+       // salvar lista qualis no banco de dados
     }
 }
