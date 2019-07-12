@@ -233,7 +233,7 @@ public class CadastroRegras extends javax.swing.JFrame {
         int pontoB4B5 = Integer.parseInt(txtB4B5.getText());
         int pontoC = Integer.parseInt(txtC.getText());
         
-        // associate the right values to each
+        // associate the right values to each Qualis 
         List<Qualis> listaQualis = null;
         
         Double multiplicador = Double.parseDouble(txtMultiplicador.getText());

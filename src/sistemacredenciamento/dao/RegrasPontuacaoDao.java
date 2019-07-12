@@ -5,10 +5,15 @@
  */
 package sistemacredenciamento.dao;
 
+import java.util.List;
+import sistemacredenciamento.model.*;
+
 /**
  *
  * @author user
  */
 public class RegrasPontuacaoDao {
-    
+    public List<RegrasPontuacao> listarRegras(){
+        return null;
+    }
 }
