@@ -55,6 +55,9 @@ public class CadastroQualificacao extends javax.swing.JFrame {
 
         jLabel4.setText("Qualis:");
 
+        cmbVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione um veiculo" }));
+
+        cmbQualis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione um qualis" }));
         cmbQualis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbQualisActionPerformed(evt);
@@ -86,7 +89,7 @@ public class CadastroQualificacao extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cmbQualis, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cmbQualis, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -137,6 +140,7 @@ public class CadastroQualificacao extends javax.swing.JFrame {
 
     private void btnCadastrarQualificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarQualificacaoActionPerformed
         Veiculo veiculo = null;
+        Qualis qualis = null;
         int ano = Integer.parseInt(txtAno.getText());
         // veiculo 
         for(Veiculo v: lv){
@@ -144,11 +148,15 @@ public class CadastroQualificacao extends javax.swing.JFrame {
                 veiculo = v;
             }
         }
-        // listaQualis
-        
+        for(Qualis q: lq){
+            if(q.getSiglaQualis().equals(cmbQualis.getSelectedItem().toString())){
+                qualis = q;
+            }
+        }
         // salvar em Qualificacao()
-        
+        Qualificacao qualificacao = new Qualificacao(ano,veiculo,qualis);
         // salvar em banco 
+        //QualificacaoDao?
     }//GEN-LAST:event_btnCadastrarQualificacaoActionPerformed
 
     private void cmbQualisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbQualisActionPerformed
