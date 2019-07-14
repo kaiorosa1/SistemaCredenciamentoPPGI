@@ -23,7 +23,7 @@ public class CadastroQualificacao extends javax.swing.JFrame {
         initCmbComponents();
     }
     List<Veiculo> lv = null;
-    List<Qualis> lq = null; 
+    List<Qualis> lq = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,6 +141,7 @@ public class CadastroQualificacao extends javax.swing.JFrame {
     private void btnCadastrarQualificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarQualificacaoActionPerformed
         Veiculo veiculo = null;
         Qualis qualis = null;
+        QualificacaoDao qualisDao = new QualificacaoDao();
         int ano = Integer.parseInt(txtAno.getText());
         // veiculo 
         for(Veiculo v: lv){
@@ -156,7 +157,9 @@ public class CadastroQualificacao extends javax.swing.JFrame {
         // salvar em Qualificacao()
         Qualificacao qualificacao = new Qualificacao(ano,veiculo,qualis);
         // salvar em banco 
-        //QualificacaoDao?
+        qualisDao.salvarQualificacao(qualificacao); // ** 
+        
+        
     }//GEN-LAST:event_btnCadastrarQualificacaoActionPerformed
 
     private void cmbQualisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbQualisActionPerformed
