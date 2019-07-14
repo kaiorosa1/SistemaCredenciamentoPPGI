@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/SistemaCredenciamentoPPGI/src/sistemacredenciamento/dao/VeiculoDao.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/SistemaCredenciamentoPPGI/src/sistemacredenciamento/dao/PublicacaoDao.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/SistemaCredenciamentoPPGI/src/sistemacredenciamento/view/CadastroQualificacao.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/SistemaCredenciamentoPPGI/src/sistemacredenciamento/dao/QualificacaoDao.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/SistemaCredenciamentoPPGI/src/sistemacredenciamento/dao/DocenteDao.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/SistemaCredenciamentoPPGI/src/sistemacredenciamento/model/Qualificacao.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/SistemaCredenciamentoPPGI/src/sistemacredenciamento/dao/RegrasPontuacaoDao.java</file>
         </group>
     </open-files>
