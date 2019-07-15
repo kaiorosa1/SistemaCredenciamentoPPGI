@@ -5,7 +5,11 @@
  */
 package sistemacredenciamento.dao;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.util.List;
+import sistemacredenciamento.connection.DBConnection;
 import sistemacredenciamento.model.Qualis;
 
 /**
@@ -13,6 +17,32 @@ import sistemacredenciamento.model.Qualis;
  * @author Kaio Rosa
  */
 public class QualisDao {
+    public void salvarQualis(Qualis qualis) {
+        //conectar com o banco de dados aqui
+        String sql = "INSERT INTO qualis(sigla,ponto) VALUES(?,?)";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try {
+            conn = DBConnection.conectarMysql();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, qualis.getSiglaQualis());
+            pstm.setInt(2,qualis.getPontoQualis());
+            pstm.execute();
+
+        } catch (Exception e) {
+
+            e.getMessage();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+
+    }
     public List<Qualis> listarQualis(){
         // listar qualis from database
         return null;

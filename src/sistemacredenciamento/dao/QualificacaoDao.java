@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import sistemacredenciamento.connection.DBConnection;
 import sistemacredenciamento.model.Qualificacao;
-import sistemacredenciamento.model.Veiculo;
+
 
 /**
  *
