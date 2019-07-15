@@ -19,6 +19,10 @@ public class Qualificacao implements Comparable<Qualificacao>{
         this.veiculoQualificacao = veiculoQualificacao;
         this.qualis = qualis;
     }
+
+    public Qualificacao() {
+       
+    }
     
      
     public Veiculo getVeiculoQualificacao() {

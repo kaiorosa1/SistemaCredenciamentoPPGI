@@ -19,7 +19,8 @@ import sistemacredenciamento.model.Veiculo;
  * @author Kaio Rosa
  */
 public class VeiculoDao {
-     public void salvarDocente(Veiculo veiculo) {
+
+    public void salvarDocente(Veiculo veiculo) {
         // sql query
         String sql = "INSERT INTO veiculo(sigla,nome,tipo,fatorImpacto,issn) VALUES(?,?,?,?,?)";
         Connection conn = null;
@@ -29,8 +30,8 @@ public class VeiculoDao {
             conn = DBConnection.conectarMysql();
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, veiculo.getSigla());
-            pstm.setString(2,veiculo.getNome());
-            pstm.setString(3,String.valueOf(veiculo.getTipo()));
+            pstm.setString(2, veiculo.getNome());
+            pstm.setString(3, String.valueOf(veiculo.getTipo()));
             pstm.setDouble(4, veiculo.getFatorDeImpacto());
             pstm.setString(5, veiculo.getISSN());
             pstm.execute();
@@ -48,8 +49,9 @@ public class VeiculoDao {
         }
 
     }
-      public List<Veiculo> listarVeiculo() {
-        //INCOMPLETE
+
+    public List<Veiculo> listarVeiculo() {
+       
         List<Veiculo> listaVeiculos = new ArrayList<>();
         String sql = "SELECT * FROM veiculo";
         Connection conn = null;
@@ -57,8 +59,6 @@ public class VeiculoDao {
 
         //Classe que vai recuperar os dados do banco de dados
         ResultSet rset = null;
-
-        
 
         try {
             conn = DBConnection.conectarMysql();
