@@ -9,18 +9,19 @@ package sistemacredenciamento.model;
  *
  * @author Kaio Rosa
  */
-
 public class Qualis {
+
     private String siglaQualis;
     private int pontoQualis;
-    
+
+    public Qualis() {
+
+    }
+
     public Qualis(String siglaQualis) {
         this.siglaQualis = siglaQualis;
     }
 
-    
-    
-    
     public String getSiglaQualis() {
         return siglaQualis;
     }
@@ -28,7 +29,7 @@ public class Qualis {
     public void setSiglaQualis(String siglaQualis) {
         this.siglaQualis = siglaQualis;
     }
-    
+
     public int getPontoQualis() {
         return pontoQualis;
     }
@@ -36,6 +37,5 @@ public class Qualis {
     public void setPontoQualis(int pontoQualis) {
         this.pontoQualis = pontoQualis;
     }
-    
-    
+
 }

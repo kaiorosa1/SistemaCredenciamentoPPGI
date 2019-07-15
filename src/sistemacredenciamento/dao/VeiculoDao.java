@@ -61,7 +61,6 @@ public class VeiculoDao {
 
         try {
             conn = DBConnection.conectarMysql();
-
             pstm = conn.prepareStatement(sql);
             rset = pstm.executeQuery();
 
