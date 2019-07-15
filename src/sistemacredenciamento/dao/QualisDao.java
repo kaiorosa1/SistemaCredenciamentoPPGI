@@ -8,6 +8,8 @@ package sistemacredenciamento.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import sistemacredenciamento.connection.DBConnection;
 import sistemacredenciamento.model.Qualis;
@@ -17,9 +19,10 @@ import sistemacredenciamento.model.Qualis;
  * @author Kaio Rosa
  */
 public class QualisDao {
+
     public void salvarQualis(Qualis qualis) {
         //conectar com o banco de dados aqui
-        String sql = "INSERT INTO qualis(sigla,ponto) VALUES(?,?)";
+        String sql = "INSERT INTO qualis(sigla,pontos) VALUES(?,?)";
         Connection conn = null;
         PreparedStatement pstm = null;
 
@@ -27,7 +30,7 @@ public class QualisDao {
             conn = DBConnection.conectarMysql();
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, qualis.getSiglaQualis());
-            pstm.setInt(2,qualis.getPontoQualis());
+            pstm.setInt(2, qualis.getPontoQualis());
             pstm.execute();
 
         } catch (Exception e) {
@@ -43,8 +46,49 @@ public class QualisDao {
         }
 
     }
-    public List<Qualis> listarQualis(){
-        // listar qualis from database
-        return null;
+
+    public List<Qualis> listarQualis() {
+        ArrayList<Qualis> listaQualis = new ArrayList<>();
+        String sql = "SELECT * FROM qualis";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        ResultSet rset = null;
+
+        try {
+            conn = DBConnection.conectarMysql();
+
+            pstm = conn.prepareStatement(sql);
+            rset = pstm.executeQuery();
+
+            while (rset.next()) {
+                Qualis qualis = new Qualis();
+                qualis.setSiglaQualis(rset.getString("sigla"));
+                qualis.setPontoQualis(rset.getInt("pontos"));
+                listaQualis.add(qualis);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rset != null) {
+                    rset.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return listaQualis;
+
     }
+
 }
