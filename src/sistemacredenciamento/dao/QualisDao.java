@@ -6,7 +6,6 @@
 package sistemacredenciamento.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class QualisDao {
     }
 
     public List<Qualis> listarQualis() {
-        ArrayList<Qualis> listaQualis = new ArrayList<>();
+        List<Qualis> listaQualis = new ArrayList<>();
         String sql = "SELECT * FROM qualis";
         Connection conn = null;
         PreparedStatement pstm = null;
