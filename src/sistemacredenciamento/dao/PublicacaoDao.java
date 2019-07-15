@@ -48,8 +48,7 @@ public class PublicacaoDao {
     }
 
     public List<Publicacao> listarPublicacao() {
-
-        List<Publicacao> listaPublicacoes = new ArrayList<>();
+    List<Publicacao> listaPublicacoes = new ArrayList<>();
         String sql = "SELECT * FROM publicacao";
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -91,4 +90,5 @@ public class PublicacaoDao {
         return listaPublicacoes;
 
     }
+        
 }
