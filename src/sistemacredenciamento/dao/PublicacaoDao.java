@@ -48,7 +48,7 @@ public class PublicacaoDao {
     }
 
     public List<Publicacao> listarPublicacao() {
-    List<Publicacao> listaPublicacoes = new ArrayList<>();
+        List<Publicacao> listaPublicacoes = new ArrayList<>();
         String sql = "SELECT * FROM publicacao";
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -64,6 +64,10 @@ public class PublicacaoDao {
             while (rset.next()) {
                 Publicacao publi = new Publicacao();
                 publi.setAno(rset.getInt("ano"));
+                // veiculo
+                publi.setTitulo(rset.getString("titulo"));
+                // lista autores
+                publi.setNumero(rset.getInt("numero"));
                 // continue with the other attributes 
                 listaPublicacoes.add(publi);
 
@@ -90,5 +94,5 @@ public class PublicacaoDao {
         return listaPublicacoes;
 
     }
-        
+
 }

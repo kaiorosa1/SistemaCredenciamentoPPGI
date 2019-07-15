@@ -11,13 +11,17 @@ import java.util.List;
  *
  * @author Kaio Rosa
  */
-public class Publicacao implements Comparable<Publicacao>{
+public class Publicacao implements Comparable<Publicacao> {
 
     private int ano;
     private Veiculo veiculoPublicacao;
     private String titulo;
     private List<Docente> listaAutores;
     private int numero;
+
+    public Publicacao() {
+
+    }
 
     public Publicacao(int ano, Veiculo veiculoPublicacao, String titulo, List<Docente> listaAutores, int numero) {
         this.ano = ano;
@@ -67,14 +71,16 @@ public class Publicacao implements Comparable<Publicacao>{
     public void setNumero(int numero) {
         this.numero = numero;
     }
-    public Qualis getQualificacaoPublicacao(List<Qualificacao> listaQualificacoes){
-        for(Qualificacao q: listaQualificacoes){
-            if(this.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla())){
+
+    public Qualis getQualificacaoPublicacao(List<Qualificacao> listaQualificacoes) {
+        for (Qualificacao q : listaQualificacoes) {
+            if (this.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla())) {
                 return q.getQualis();
             }
         }
         return null;
     }
+
     @Override
     public int compareTo(Publicacao p) {
         return this.getTitulo().compareTo(p.getTitulo());
