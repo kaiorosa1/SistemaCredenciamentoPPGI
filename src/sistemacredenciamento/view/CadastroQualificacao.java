@@ -24,6 +24,7 @@ public class CadastroQualificacao extends javax.swing.JFrame {
     }
     List<Veiculo> lv = null;
     List<Qualis> lq = null;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,22 +145,22 @@ public class CadastroQualificacao extends javax.swing.JFrame {
         QualificacaoDao qualisDao = new QualificacaoDao();
         int ano = Integer.parseInt(txtAno.getText());
         // veiculo 
-        for(Veiculo v: lv){
-            if(v.getSigla().equals(cmbVeiculo.getSelectedItem().toString())){
+        for (Veiculo v : lv) {
+            if (v.getSigla().equals(cmbVeiculo.getSelectedItem().toString())) {
                 veiculo = v;
             }
         }
-        for(Qualis q: lq){
-            if(q.getSiglaQualis().equals(cmbQualis.getSelectedItem().toString())){
+        for (Qualis q : lq) {
+            if (q.getSiglaQualis().equals(cmbQualis.getSelectedItem().toString())) {
                 qualis = q;
             }
         }
         // salvar em Qualificacao()
-        Qualificacao qualificacao = new Qualificacao(ano,veiculo,qualis);
+        Qualificacao qualificacao = new Qualificacao(ano, veiculo, qualis);
         // salvar em banco 
         qualisDao.salvarQualificacao(qualificacao); // ** 
-        
-        
+
+
     }//GEN-LAST:event_btnCadastrarQualificacaoActionPerformed
 
     private void cmbQualisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbQualisActionPerformed
@@ -217,21 +218,20 @@ public class CadastroQualificacao extends javax.swing.JFrame {
         // continue...
         VeiculoDao veiculoDao = new VeiculoDao();
         QualisDao qualisDao = new QualisDao();
-        
+
         lv = veiculoDao.listarVeiculo();
         lq = qualisDao.listarQualis(); // not implememted yet
-        
-         for (Veiculo v : lv) {  
-            cmbVeiculo.addItem(v.getSigla() +" - " +v.getNome());
+
+        for (Veiculo v : lv) {
+            cmbVeiculo.addItem(v.getSigla() + " - " + v.getNome());
         }
-         
-         
-       // init Qualis
-       String[] qualisLista = {"A1", "A2", "B1", "B2", "B3", "B4", "B5", "C"};
-       for(String qualis : qualisLista){
-           cmbQualis.addItem(qualis);
-       }
-              
-       // salvar lista qualis no banco de dados
+
+        // init Qualis
+        String[] qualisLista = {"A1", "A2", "B1", "B2", "B3", "B4", "B5", "C"};
+        for (String qualis : qualisLista) {
+            cmbQualis.addItem(qualis);
+        }
+
+        // salvar lista qualis no banco de dados
     }
 }

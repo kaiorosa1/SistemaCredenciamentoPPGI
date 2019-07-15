@@ -9,10 +9,15 @@ package sistemacredenciamento.model;
  *
  * @author Kaio Rosa
  */
-public class Qualificacao implements Comparable<Qualificacao>{
+public class Qualificacao implements Comparable<Qualificacao> {
+
     private int ano;
     private Veiculo veiculoQualificacao;
     private Qualis qualis;
+
+    public Qualificacao() {
+
+    }
 
     public Qualificacao(int ano, Veiculo veiculoQualificacao, Qualis qualis) {
         this.ano = ano;
@@ -20,11 +25,6 @@ public class Qualificacao implements Comparable<Qualificacao>{
         this.qualis = qualis;
     }
 
-    public Qualificacao() {
-       
-    }
-    
-     
     public Veiculo getVeiculoQualificacao() {
         return veiculoQualificacao;
     }
@@ -32,8 +32,6 @@ public class Qualificacao implements Comparable<Qualificacao>{
     public void setVeiculoQualificacao(Veiculo veiculoQualificacao) {
         this.veiculoQualificacao = veiculoQualificacao;
     }
-
-   
 
     public Qualis getQualis() {
         return qualis;
@@ -56,5 +54,4 @@ public class Qualificacao implements Comparable<Qualificacao>{
         return q.getQualis().getSiglaQualis().compareTo(this.getQualis().getSiglaQualis());
     }
 
-   
 }

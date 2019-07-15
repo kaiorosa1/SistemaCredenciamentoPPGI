@@ -20,7 +20,8 @@ import sistemacredenciamento.model.Veiculo;
  * @author Kaio Rosa
  */
 public class QualificacaoDao {
-    public void salvarQualificacao(Qualificacao qualificacao){
+
+    public void salvarQualificacao(Qualificacao qualificacao) {
         //conectar com o banco de dados aqui
         String sql = "INSERT INTO qualificacao(ano,veiculo,qualis) VALUES(?,?,?)";
         Connection conn = null;
@@ -29,10 +30,10 @@ public class QualificacaoDao {
         try {
             conn = DBConnection.conectarMysql();
             pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, qualificacao.getAno()); 
+            pstm.setInt(1, qualificacao.getAno());
             // set siglas com foreign key?
             pstm.setString(2, qualificacao.getVeiculoQualificacao().getSigla()); // see this one 
-            pstm.setString(3,qualificacao.getQualis().getSiglaQualis()); // see this one
+            pstm.setString(3, qualificacao.getQualis().getSiglaQualis()); // see this one
             pstm.execute();
 
         } catch (Exception e) {
@@ -46,10 +47,11 @@ public class QualificacaoDao {
             } catch (Exception e) {
             }
         }
-       
+
     }
-    public List<Qualificacao> listarQualificacao(){
-         List<Qualificacao> listaVeiculos = new ArrayList<>();
+
+    public List<Qualificacao> listarQualificacao() {
+        List<Qualificacao> listaQualificacoes = new ArrayList<>();
         String sql = "SELECT * FROM qualificacao";
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -66,11 +68,11 @@ public class QualificacaoDao {
             while (rset.next()) {
                 Qualificacao qualificacao = new Qualificacao();
                 qualificacao.setAno(rset.getInt("ano"));
-                //set Veiculo 
+                // set Veiculo 
                 // set Qualis
-                
+
                 // add in the lista veiculos
-                listaVeiculos.add(qualificacao);
+                listaQualificacoes.add(qualificacao);
             }
 
         } catch (Exception e) {
@@ -90,8 +92,8 @@ public class QualificacaoDao {
                 e.printStackTrace();
             }
         }
-        return listaVeiculos;
+        return listaQualificacoes;
 
     }
-    
+
 }

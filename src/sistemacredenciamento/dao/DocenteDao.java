@@ -52,7 +52,6 @@ public class DocenteDao {
     }
 
     public ArrayList<Docente> listarDocente() {
-        //INCOMPLETE
         ArrayList<Docente> listaDocentes = new ArrayList<>();
         String sql = "SELECT * FROM docente";
         Connection conn = null;
@@ -60,8 +59,6 @@ public class DocenteDao {
 
         //Classe que vai recuperar os dados do banco de dados
         ResultSet rset = null;
-
-        
 
         try {
             conn = DBConnection.conectarMysql();
