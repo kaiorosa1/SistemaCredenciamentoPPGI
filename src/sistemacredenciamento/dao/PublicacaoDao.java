@@ -20,7 +20,7 @@ import sistemacredenciamento.model.*;
 public class PublicacaoDao {
 
     public void salvarPublicacao(Publicacao publicacao) {
-        String sql = "INSERT INTO qualis(sigla,pontos) VALUES(?,?)";
+        String sql = "INSERT INTO publicacao(ano,veiculo,titulo,docentes,numero) VALUES(?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement pstm = null;
 
