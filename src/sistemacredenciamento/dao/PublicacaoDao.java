@@ -68,7 +68,6 @@ public class PublicacaoDao {
                 publi.setTitulo(rset.getString("titulo"));
                 // lista autores
                 publi.setNumero(rset.getInt("numero"));
-                // continue with the other attributes 
                 listaPublicacoes.add(publi);
 
             }
