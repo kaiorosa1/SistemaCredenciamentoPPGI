@@ -127,6 +127,8 @@ public class CadastroPrincipal extends javax.swing.JFrame {
 
     private void btnCadastroDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroDocenteActionPerformed
         // TODO add your handling code here:
+        CadastroDocente.startCadastroDocente();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCadastroDocenteActionPerformed
 
     /**

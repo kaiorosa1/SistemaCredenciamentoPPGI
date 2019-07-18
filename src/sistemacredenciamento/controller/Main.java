@@ -27,10 +27,8 @@ import sistemacredenciamento.model.*;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    
+    public static void oldMain() {
 
         String docentesFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\docentes.csv";
         String veiculosFile = "C:\\Users\\user\\Documents\\NetBeansProjects\\SistemaCredenciamentoPPGI\\src\\sistemacredenciamento\\veiculos.csv";

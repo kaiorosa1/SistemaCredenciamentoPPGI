@@ -14,11 +14,9 @@ import javax.swing.JOptionPane;
  * @author Kaio Rosa
  */
 public class TesteDBConnection {
-    /**
-     * @param args the command line arguments
-     */
+   
 //     teste se esta conectando com o banco
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void testeConnection() throws ClassNotFoundException {
         // TODO code application logic here
         try {
             Connection conn = DBConnection.conectarMysql();
