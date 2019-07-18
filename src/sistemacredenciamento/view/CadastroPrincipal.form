@@ -43,16 +43,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCadastroPublicacao" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jButton2" max="32767" attributes="0"/>
-                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <Component id="btnCadastroVeiculo" max="32767" attributes="0"/>
+                      <Component id="btnCadastroDocente" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton4" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
-                      <Component id="jButton5" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastroRegras" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="btnCadastroQualis" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="btnCadastroQualificacao" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
@@ -70,18 +70,18 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastroRegras" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastroDocente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastroVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastroQualis" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastroPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastroQualificacao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
               </Group>
@@ -89,27 +89,30 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnCadastroDocente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastro Dcoente"/>
+            <Property name="text" type="java.lang.String" value="Cadastro Docente"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastroDocenteActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnCadastroVeiculo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro Veiculo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnCadastroPublicacao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro Publicacao"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnCadastroRegras">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro Regras"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="btnCadastroQualificacao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro Qualificacao"/>
           </Properties>
@@ -123,12 +126,12 @@
             <Property name="text" type="java.lang.String" value="Cadastros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="btnCadastroQualis">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro Qualis"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastroQualisActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
