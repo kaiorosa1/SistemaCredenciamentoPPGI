@@ -5,6 +5,8 @@
  */
 package sistemacredenciamento.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -55,8 +57,18 @@ public class CadastroPrincipal extends javax.swing.JFrame {
         btnCadastroPublicacao.setText("Cadastro Publicacao");
 
         btnCadastroRegras.setText("Cadastro Regras");
+        btnCadastroRegras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroRegrasActionPerformed(evt);
+            }
+        });
 
         btnCadastroQualificacao.setText("Cadastro Qualificacao");
+        btnCadastroQualificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroQualificacaoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -128,6 +140,9 @@ public class CadastroPrincipal extends javax.swing.JFrame {
 
     private void btnCadastroQualisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroQualisActionPerformed
         // TODO add your handling code here:
+        
+        JOptionPane.showMessageDialog(null, "Casdastro Qualis Form");
+        this.setVisible(false);
     }//GEN-LAST:event_btnCadastroQualisActionPerformed
 
     private void btnCadastroDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroDocenteActionPerformed
@@ -142,10 +157,20 @@ public class CadastroPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCadastroVeiculoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void btnCadastroRegrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroRegrasActionPerformed
+        // TODO add your handling code here:
+        CadastroRegras.startCadastroRegras();
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCadastroRegrasActionPerformed
+
+    private void btnCadastroQualificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroQualificacaoActionPerformed
+        // TODO add your handling code here:
+       CadastroQualificacao.startCadastroQualificacao();
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCadastroQualificacaoActionPerformed
+
+ 
+    public static void startCadastroPrincipal() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

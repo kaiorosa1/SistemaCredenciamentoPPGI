@@ -5,6 +5,8 @@
  */
 package sistemacredenciamento.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -106,14 +108,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnCadastroPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroPrincipalActionPerformed
         // TODO add your handling code here:
+        CadastroPrincipal.startCadastroPrincipal();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCadastroPrincipalActionPerformed
 
     private void btnEstatisticaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstatisticaPrincipalActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Estatistica Form");       
     }//GEN-LAST:event_btnEstatisticaPrincipalActionPerformed
 
     private void btnRelatorioPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioPrincipalActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Relatorio Form");
     }//GEN-LAST:event_btnRelatorioPrincipalActionPerformed
 
     /**
