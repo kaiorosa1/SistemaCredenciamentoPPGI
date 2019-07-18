@@ -46,6 +46,11 @@ public class CadastroPrincipal extends javax.swing.JFrame {
         });
 
         btnCadastroVeiculo.setText("Cadastro Veiculo");
+        btnCadastroVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroVeiculoActionPerformed(evt);
+            }
+        });
 
         btnCadastroPublicacao.setText("Cadastro Publicacao");
 
@@ -130,6 +135,12 @@ public class CadastroPrincipal extends javax.swing.JFrame {
         CadastroDocente.startCadastroDocente();
         this.setVisible(false);
     }//GEN-LAST:event_btnCadastroDocenteActionPerformed
+
+    private void btnCadastroVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroVeiculoActionPerformed
+        // TODO add your handling code here:
+        CadastroVeiculo.startCadastroVeiculo();
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCadastroVeiculoActionPerformed
 
     /**
      * @param args the command line arguments

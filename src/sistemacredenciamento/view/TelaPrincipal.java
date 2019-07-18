@@ -29,33 +29,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCadastroPrincipal = new javax.swing.JButton();
+        btnEstatisticaPrincipal = new javax.swing.JButton();
+        btnRelatorioPrincipal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sistema PPGI");
 
-        jButton1.setText("Cadastramento");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastroPrincipal.setText("Cadastramento");
+        btnCadastroPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCadastroPrincipalActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Estatisticas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEstatisticaPrincipal.setText("Estatisticas");
+        btnEstatisticaPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEstatisticaPrincipalActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Relatorio Recastramento");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnRelatorioPrincipal.setText("Relatorio Recastramento");
+        btnRelatorioPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnRelatorioPrincipalActionPerformed(evt);
             }
         });
 
@@ -71,10 +71,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(btnEstatisticaPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRelatorioPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCadastroPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,11 +82,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
                 .addGap(61, 61, 61)
-                .addComponent(jButton1)
+                .addComponent(btnCadastroPrincipal)
                 .addGap(29, 29, 29)
-                .addComponent(jButton3)
+                .addComponent(btnRelatorioPrincipal)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnEstatisticaPrincipal)
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -105,17 +104,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCadastroPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroPrincipalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCadastroPrincipalActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEstatisticaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstatisticaPrincipalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEstatisticaPrincipalActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnRelatorioPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioPrincipalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnRelatorioPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,9 +153,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnCadastroPrincipal;
+    private javax.swing.JButton btnEstatisticaPrincipal;
+    private javax.swing.JButton btnRelatorioPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
