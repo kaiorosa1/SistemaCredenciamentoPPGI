@@ -21,6 +21,7 @@ import sistemacredenciamento.model.Docente;
  */
 public class DocenteDao {
 
+    /* salvarDocente salva docente no banco de dados */
     public void salvarDocente(Docente docente) {
         //conectar com o banco de dados aqui
         String sql = "INSERT INTO docente(codigo, nome, dataNascimento, dataIngresso, isCoordenador) VALUES(?,?,?,?,?)";
@@ -51,6 +52,7 @@ public class DocenteDao {
 
     }
 
+    /* listaDocente salva docentes do banco de dados em um array*/
     public ArrayList<Docente> listarDocente() {
         ArrayList<Docente> listaDocentes = new ArrayList<>();
         String sql = "SELECT * FROM docente";
@@ -70,15 +72,14 @@ public class DocenteDao {
                 Docente docente = new Docente();
                 docente.setCodigo(rset.getInt("codigo"));
                 docente.setNome(rset.getString("nome"));
-                docente.setDataNascimeto( (Date) rset.getDate("dataNascimento"));
+                docente.setDataNascimeto((Date) rset.getDate("dataNascimento"));
                 docente.setDataIngresso((Date) rset.getDate("dataIngresso"));
                 docente.setIsCoordenador(rset.getBoolean("isCoordenador"));
                 //Adiciono o produto recuperado em uma lista
-               
+
                 listaDocentes.add(docente);
 
             }
-            
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +98,7 @@ public class DocenteDao {
                 e.printStackTrace();
             }
         }
-        
+
         return listaDocentes;
 
     }

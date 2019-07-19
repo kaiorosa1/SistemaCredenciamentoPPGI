@@ -19,6 +19,7 @@ import sistemacredenciamento.model.*;
  */
 public class PublicacaoDao {
 
+    /* salvarPublicacao salva publicacao no banco de dados */
     public void salvarPublicacao(Publicacao publicacao) {
         String sql = "INSERT INTO publicacao(ano,veiculo,titulo,docentes,numero) VALUES(?,?,?,?,?)";
         Connection conn = null;
@@ -47,6 +48,7 @@ public class PublicacaoDao {
         }
     }
 
+    /* listaPublicacao cria lista com Pulicacoes salvas no banco e retorna em uma lista */
     public List<Publicacao> listarPublicacao() {
         List<Publicacao> listaPublicacoes = new ArrayList<>();
         String sql = "SELECT * FROM publicacao";

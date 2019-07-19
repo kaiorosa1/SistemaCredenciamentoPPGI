@@ -19,6 +19,7 @@ import sistemacredenciamento.model.Qualis;
  */
 public class QualisDao {
 
+    /* salvarQualis salva qualis no banco de dados */
     public void salvarQualis(Qualis qualis) {
         //conectar com o banco de dados aqui
         String sql = "INSERT INTO qualis(sigla,pontos) VALUES(?,?)";
@@ -45,7 +46,7 @@ public class QualisDao {
         }
 
     }
-
+    /* listaQualis salva qualis do banco de dados em um array*/
     public List<Qualis> listarQualis() {
         List<Qualis> listaQualis = new ArrayList<>();
         String sql = "SELECT * FROM qualis";

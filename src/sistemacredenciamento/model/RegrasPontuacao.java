@@ -29,6 +29,10 @@ public class RegrasPontuacao {
         this.pontuacaoMinimaRecredenciamento = pontuacaoMinimaRecredenciamento;
     }
 
+    public RegrasPontuacao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public List<Qualis> getListaQualis() {
         return listaQualis;
     }

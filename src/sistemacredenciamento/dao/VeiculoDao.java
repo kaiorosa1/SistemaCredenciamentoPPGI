@@ -19,6 +19,7 @@ import sistemacredenciamento.model.Veiculo;
  */
 public class VeiculoDao {
 
+    /* salvarVeiculo salva veiculo no banco de dados */
     public void salvarDocente(Veiculo veiculo) {
         // sql query
         String sql = "INSERT INTO veiculo(sigla,nome,tipo,fatorImpacto,issn) VALUES(?,?,?,?,?)";
@@ -49,8 +50,9 @@ public class VeiculoDao {
 
     }
 
+    /* listaVeiculo salva veiculo do banco de dados em um array*/
     public List<Veiculo> listarVeiculo() {
-       
+
         List<Veiculo> listaVeiculos = new ArrayList<>();
         String sql = "SELECT * FROM veiculo";
         Connection conn = null;

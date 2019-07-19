@@ -8,6 +8,8 @@ package sistemacredenciamento.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import sistemacredenciamento.connection.DBConnection;
 import sistemacredenciamento.model.*;
@@ -18,6 +20,7 @@ import sistemacredenciamento.model.*;
  */
 public class RegrasPontuacaoDao {
 
+    /* salvarRegras salva regras no banco de dados */
     public void salvarRegras(RegrasPontuacao regras) {
         //conectar com o banco de dados aqui
         String sql = "INSERT INTO RegrasPontuacao(dataInicio, dataFim, listaQualis, multiplicadorPeridicos,quantidadeDeAnosConsiderar, pontuacaoMinimaRecredenciamento)"
@@ -49,8 +52,49 @@ public class RegrasPontuacaoDao {
         }
 
     }
-
+    /* listaRegras salva regras do banco de dados em um array*/
     public List<RegrasPontuacao> listarRegras() {
-        return null;
+        List<RegrasPontuacao> listaRegras = new ArrayList<>();
+        String sql = "SELECT * FROM regras";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        //Classe que vai recuperar os dados do banco de dados
+        ResultSet rset = null;
+
+        try {
+            conn = DBConnection.conectarMysql();
+
+            pstm = conn.prepareStatement(sql);
+            rset = pstm.executeQuery();
+
+            while (rset.next()) {
+                RegrasPontuacao regras = new RegrasPontuacao();
+                // regras.setAno(rset.getInt("ano"));
+
+                // add in the lista regras
+                listaRegras.add(regras);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rset != null) {
+                    rset.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return listaRegras;
+
     }
+    
 }

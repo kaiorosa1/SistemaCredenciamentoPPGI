@@ -13,13 +13,13 @@ import java.util.List;
 import sistemacredenciamento.connection.DBConnection;
 import sistemacredenciamento.model.Qualificacao;
 
-
 /**
  *
  * @author Kaio Rosa
  */
 public class QualificacaoDao {
 
+    /* salvarQualificacao salva qualificacao no banco de dados */
     public void salvarQualificacao(Qualificacao qualificacao) {
         //conectar com o banco de dados aqui
         String sql = "INSERT INTO qualificacao(ano,veiculo,qualis) VALUES(?,?,?)";
@@ -48,7 +48,7 @@ public class QualificacaoDao {
         }
 
     }
-
+    /* listaQualificacao salva qualificacao do banco de dados em um array*/
     public List<Qualificacao> listarQualificacao() {
         List<Qualificacao> listaQualificacoes = new ArrayList<>();
         String sql = "SELECT * FROM qualificacao";
