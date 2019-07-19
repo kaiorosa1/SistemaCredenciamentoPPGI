@@ -21,7 +21,7 @@ public class RegrasPontuacaoDao {
     public void salvarRegras(RegrasPontuacao regras) {
         //conectar com o banco de dados aqui
         String sql = "INSERT INTO RegrasPontuacao(dataInicio, dataFim, listaQualis, multiplicadorPeridicos,quantidadeDeAnosConsiderar, pontuacaoMinimaRecredenciamento)"
-                + "   VALUES(?,?,?,?,?,?)";
+                + " VALUES(?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement pstm = null;
 

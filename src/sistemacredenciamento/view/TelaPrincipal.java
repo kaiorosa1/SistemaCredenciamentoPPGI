@@ -114,12 +114,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnEstatisticaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstatisticaPrincipalActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Estatistica Form");       
+        JOptionPane.showMessageDialog(null, "Estatistica Form");
+        this.setVisible(false);
+        
     }//GEN-LAST:event_btnEstatisticaPrincipalActionPerformed
 
     private void btnRelatorioPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioPrincipalActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Relatorio Form");
+        this.setVisible(false);
     }//GEN-LAST:event_btnRelatorioPrincipalActionPerformed
 
     /**
