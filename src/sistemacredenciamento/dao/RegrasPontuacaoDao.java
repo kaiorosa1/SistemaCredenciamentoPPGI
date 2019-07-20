@@ -70,8 +70,12 @@ public class RegrasPontuacaoDao {
 
             while (rset.next()) {
                 RegrasPontuacao regras = new RegrasPontuacao();
-                // regras.setAno(rset.getInt("ano"));
-
+                regras.setDataInicio((Date) rset.getDate("dataInicio"));
+                regras.setDataFim((Date) rset.getDate("dataFim"));
+                //regras.setListaQualis(listaQualis);
+                regras.setMultiplicadorPeridicos(rset.getDouble("multiplicadorPeridicos"));
+                regras.setQuantidadeDeAnosConsiderar(rset.getInt("quantidadeDeAnosConsiderar"));
+                regras.setPontuacaoMinimaRecredenciamento(rset.getInt("pontuacaoMinimaRecredenciamento"));
                 // add in the lista regras
                 listaRegras.add(regras);
             }
