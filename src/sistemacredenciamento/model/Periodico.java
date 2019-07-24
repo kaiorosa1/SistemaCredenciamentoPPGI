@@ -12,6 +12,7 @@ import java.util.List;
  * @author Kaio Rosa
  */
 public class Periodico extends Publicacao {
+
     private int volumePeriodico;
     private int paginalInical;
     private int paginaFinal;
@@ -23,8 +24,6 @@ public class Periodico extends Publicacao {
         this.paginaFinal = paginaFinal;
     }
 
-    
-    
     public int getPaginalInical() {
         return paginalInical;
     }
@@ -40,9 +39,7 @@ public class Periodico extends Publicacao {
     public void setPaginaFinal(int paginaFinal) {
         this.paginaFinal = paginaFinal;
     }
-    
 
-    
     public int getVolumePeriodico() {
         return volumePeriodico;
     }

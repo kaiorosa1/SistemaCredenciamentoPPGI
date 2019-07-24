@@ -10,12 +10,16 @@ package sistemacredenciamento.model;
  * @author Kaio Rosa
  */
 public class Veiculo {
-    
+
     private String sigla;
     private String nome;
     private char tipo;
     private double fatorDeImpacto;
     private String ISSN;
+
+    public Veiculo() {
+
+    }
 
     public Veiculo(String sigla, String nome, char tipo, double fatorDeImpacto, String ISSN) {
         this.sigla = sigla;
@@ -25,11 +29,6 @@ public class Veiculo {
         this.ISSN = ISSN;
     }
 
-    public Veiculo() {
-        
-    }
-    
-    
     public String getSigla() {
         return sigla;
     }
@@ -74,7 +73,5 @@ public class Veiculo {
     public String toString() {
         return "Veiculo{" + "nome=" + nome + '}';
     }
-    
-    
-    
+
 }

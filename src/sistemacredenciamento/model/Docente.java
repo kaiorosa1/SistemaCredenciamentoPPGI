@@ -23,9 +23,9 @@ public class Docente implements Comparable<Docente> {
     private boolean isCoordenador;
 
     public Docente() {
-        
+
     }
-    
+
     public Docente(long codigo, String nome, Date dataNacimeto, Date dataIngresso, boolean isCordenador) {
         this.codigo = codigo;
         this.nome = nome;
@@ -33,8 +33,6 @@ public class Docente implements Comparable<Docente> {
         this.dataIngresso = dataIngresso;
         this.isCoordenador = isCordenador;
     }
-
-    
 
     public Date getDataNascimeto() {
         return dataNascimeto;
@@ -76,6 +74,7 @@ public class Docente implements Comparable<Docente> {
         this.isCoordenador = isCoordenador;
     }
 
+    /* getListaPublicacoesDocente recebe lista publicacao geral e retoran a lista de publicacao de um determinado Docente*/
     public List<Publicacao> getListaPublicacoesDocente(List<Publicacao> lp) {
         List<Publicacao> listaPublicacaoAutor = new ArrayList<>();
         for (Publicacao p : lp) {
@@ -87,6 +86,7 @@ public class Docente implements Comparable<Docente> {
         return listaPublicacaoAutor;
     }
 
+    /* getPontuacaoDocente calcula pontucao do docente de acordo com as regras e as publicacao do associdas */
     public double getPontuacaoDocente(List<Publicacao> publi, List<Qualificacao> lq, RegrasPontuacao r) {
         double pontosAutor = 0;
         Calendar calendar = Calendar.getInstance();
@@ -96,7 +96,7 @@ public class Docente implements Comparable<Docente> {
         for (Publicacao p : publi) {
 
             for (Qualificacao q : lq) {
-                if (p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla()) && p.getAno() >= anoMinimo && p.getAno() < calendar.get(Calendar.YEAR) ) {
+                if (p.getVeiculoPublicacao().getSigla().equals(q.getVeiculoQualificacao().getSigla()) && p.getAno() >= anoMinimo && p.getAno() < calendar.get(Calendar.YEAR)) {
                     if (p.getVeiculoPublicacao().getTipo() == 'P') {
                         pontosAutor += q.getQualis().getPontoQualis() * r.getMultiplicadorPeridicos();
 

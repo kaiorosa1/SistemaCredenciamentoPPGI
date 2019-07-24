@@ -13,12 +13,17 @@ import java.util.List;
  * @author Kaio Rosa
  */
 public class RegrasPontuacao {
+
     private Date dataInicio;
     private Date dataFim;
     private List<Qualis> listaQualis;
     private double multiplicadorPeridicos;
     private int quantidadeDeAnosConsiderar;
     private int pontuacaoMinimaRecredenciamento;
+
+    public RegrasPontuacao() {
+
+    }
 
     public RegrasPontuacao(Date dataInicio, Date dataFim, List<Qualis> listaQualis, double multiplicadorPeridicos, int quantidadeDeAnosConsiderar, int pontuacaoMinimaRecredenciamento) {
         this.dataInicio = dataInicio;
@@ -27,10 +32,6 @@ public class RegrasPontuacao {
         this.multiplicadorPeridicos = multiplicadorPeridicos;
         this.quantidadeDeAnosConsiderar = quantidadeDeAnosConsiderar;
         this.pontuacaoMinimaRecredenciamento = pontuacaoMinimaRecredenciamento;
-    }
-
-    public RegrasPontuacao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public List<Qualis> getListaQualis() {
@@ -80,7 +81,5 @@ public class RegrasPontuacao {
     public void setPontuacaoMinimaRecredenciamento(int pontuacaoMinimaRecredenciamento) {
         this.pontuacaoMinimaRecredenciamento = pontuacaoMinimaRecredenciamento;
     }
-    
-    
-    
+
 }

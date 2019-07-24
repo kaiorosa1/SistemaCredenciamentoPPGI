@@ -50,7 +50,7 @@ public class VeiculoDao {
 
     }
 
-    /* listaVeiculo salva veiculo do banco de dados em um array*/
+    /* listarVeiculo salva veiculo do banco de dados em um array*/
     public List<Veiculo> listarVeiculo() {
 
         List<Veiculo> listaVeiculos = new ArrayList<>();
