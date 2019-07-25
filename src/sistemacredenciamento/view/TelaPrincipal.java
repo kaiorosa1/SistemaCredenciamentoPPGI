@@ -115,6 +115,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnEstatisticaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstatisticaPrincipalActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Estatistica Form");
+        TelaEstatisticas.startEstatisticas();
         this.setVisible(false);
         
     }//GEN-LAST:event_btnEstatisticaPrincipalActionPerformed
@@ -122,6 +123,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnRelatorioPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioPrincipalActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Relatorio Form");
+        TelaRelatorioRecadastramento.startRelatorioRecadastramento();
         this.setVisible(false);
     }//GEN-LAST:event_btnRelatorioPrincipalActionPerformed
 
