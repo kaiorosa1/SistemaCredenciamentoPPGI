@@ -10,5 +10,5 @@ SistemaCredenciamentoPPGI is a project written in Java where the user can regist
 
 Heavily inspired by: 
 
-http://www.inf.ufes.br/~vitorsouza/wp-content/uploads/teaching-br-prog3-20171-especificacao-trabalho.pdf (Portuguese)
+http://www.inf.ufes.br/~vitorsouza/archive/2020/wp-content/uploads/teaching-br-prog3-20171-especificacao-trabalho.pdf (Portuguese)
 
